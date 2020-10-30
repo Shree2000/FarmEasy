@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Unica+One&display=swap%27");
+
+.vl {
+  border-left: 1.5px solid white;
+  height: 30px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+* {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+}
+ul {
+  display: flex;
+  margin-right: 150px;
+  margin-top: 30px;
+}
+.parent h1 {
+  margin-left: 150px;
+  margin-top: 25px;
+  color: white;
+  font-size: 2.7rem;
+  position: relative;
+  transition: all 0.3s;
+  transform-origin: 50%,50%;
+  font-family: "Unica One", cursive;
+}
+.parent h1:hover {
+  color:#fadcac;
+  /* text-decoration: underline; */
+  border-bottom: 4px solid #fadcac;
+}
+ul li {
+  margin-left: 10px;
+  margin-right: 20px;
+  text-decoration: none;
+  font-size: 22px;
+}
+li a {
+  text-decoration: none !important;
+  color: white;
+  letter-spacing: 2px;
+  position: relative;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+li a:hover {
+  background-color: #158467 ;
+  color:  #fadcac;
+}
+
+li a:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 8px;
+  height: 100%;
+  background: transparent;
+  border: 2px solid  #fadcac;
+  box-sizing: border-box;
+  transition: transform 0.5s;
+  transform-origin: top left;
+  transform: scale(0);
+}
+li a:hover:after {
+  transition: transform 0.5s;
+  transform-origin: bottom right;
+  transform: scale(1);
+}

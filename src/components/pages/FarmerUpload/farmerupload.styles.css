@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Amita:wght@700&family=Bayon&family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
+.formWrapper{
+    height: 400px;
+    width: 470px;
+    /* margin: auto; */
+    
+    position: relative;
+    top: 10px;
+    
+}
+.contentArea{
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left: 360px;
+    height: 100vh;
+    width: calc(100vw - 760px);
+    color:  #3E5B23;
+    /* #c3ce85; */
+    margin-left: 55px;
+    z-index: 3;
+}
+.contentArea h1{
+    font-size: 40px;
+    color: #77a058;
+    position: relative;
+    right: 40px;
+    width: 40%;
+    top: 45px;
+    font-family: 'Slabo 27px', serif;
+}
+.farmermsg{
+    position: relative;
+    font-family: 'Slabo 27px', serif;
+    color: #77a058;
+    font-size: 35px;
+    width: 40%;
+    left: 140px;
+    top: 25px;
+}
+
+.form-control:focus{ border-width: 3px;border-color: #379683;  box-shadow: none; -webkit-box-shadow: none;} 
+.has-error .form-control:focus{box-shadow: none; -webkit-box-shadow: none;}

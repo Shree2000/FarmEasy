@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+.loginbox
+{
+    width: 400px;
+    height: 500px;
+    border-radius: 18px;
+    background-color: #fadcac;
+    position: absolute;
+    left: calc(50% - 200px);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+.circle_img {
+    
+    width: 100px;
+    height: 100px;
+    transform: rotate(10deg);
+    position: absolute;
+    top: -48px;
+    left: calc(50% - 50px);
+}
+.loginheader{
+    margin: 0;
+    padding: 0 0 20px;
+    color: #065446;
+    text-align: center;
+    font-size: 22px;
+    font-family: 'Open Sans', sans-serif;
+}
+.loginbox p{
+    margin: 10px 0 ;
+    padding: 0;
+    color: #065446;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+}
+.loginbox input, select{
+    width: 100%;
+    margin-bottom:20px ;
+    font-family: 'Open Sans', sans-serif;
+}
+.loginbox input[type="text"], input[type="password"]{
+    border: none;
+    border-bottom: 1px solid #065446;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #158467;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;    
+}
+
+.loginbox input[type="text"]:focus, input[type="password"]:focus{
+    border: 2px solid #065446;
+    border-radius: 10px;
+}
+.loginbox input[type="submit"]{
+    border: none;
+    outline: none;
+    height:40px;
+    background: #065446;
+    font-size: 18px;
+    border-radius: 20px;
+    color: #fadcac;
+    font-family: 'Open Sans', sans-serif;
+    margin: 10px 0;
+}
+.loginbox input[type="submit"]:hover{
+    cursor: pointer;
+   background-color: teal;
+   font-family: 'Open Sans', sans-serif;
+}
+.loginbox a{
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    line-height: 20px;
+    color: #065446;
+    font-family: 'Open Sans', sans-serif;
+    margin: 15px 0;
+}
+.loginbox a:hover{
+    color:#411f1f;
+}
+.loginbox .cross{
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 20px;
+    color: #065446;
+    font-size: 40px;
+    font-family: 'Open Sans', sans-serif;
+    transform: rotate(45deg);
+    font-weight: bold;
+  }
+
