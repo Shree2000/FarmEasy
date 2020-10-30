@@ -9,6 +9,7 @@ import './farmerupload.styles.css';
  import Button from 'react-bootstrap/Button';
  import Form from 'react-bootstrap/Form';
  import Modal from 'react-bootstrap/Modal';
+ import Identify from '../../../utils/Identify';
 
 class FarmerUpload extends React.Component{
     constructor()
@@ -37,7 +38,21 @@ class FarmerUpload extends React.Component{
     handleSubmit=event=>{
         event.preventDefault();
         console.log(this.success, this.cropAdded);  
-        //make a post request
+        axios.post('http://7137aa5b1a55.ngrok.io/register',{
+            availability: this.state.cropQuantity,
+            description:"Potato",
+            price:this.state.cropPrice,
+            harvestseason:"Summer",
+            imageurl:'abcd',
+            productcategory:this.state.cropName,
+            sellername:Identify.username
+        })
+          .then(function (response) {
+            console.log(response.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
         this.setState({
             cropName:'',
             cropPhoto:'',
