@@ -8,6 +8,7 @@ import FarmerRightWrapper from '../../farmer-right-wrapper/farmer-right-wrapper.
 import './farmerupload.styles.css';
  import Button from 'react-bootstrap/Button';
  import Form from 'react-bootstrap/Form';
+ import axios from 'axios';
  import Modal from 'react-bootstrap/Modal';
  import Identify from '../../../utils/Identify';
 

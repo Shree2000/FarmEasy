@@ -39,10 +39,10 @@ ul {
 ul li {
   margin-left: 10px;
   margin-right: 20px;
-  text-decoration: none;
+  text-decoration: none !important;
   font-size: 22px;
 }
-li a {
+ul .navbuts {
   text-decoration: none !important;
   color: white;
   letter-spacing: 2px;
@@ -52,12 +52,12 @@ li a {
   border-radius: 8px;
   transition: all 0.3s;
 }
-li a:hover {
+ul .navbuts:hover {
   background-color: #158467 ;
   color:  #fadcac;
 }
 
-li a:after {
+ul .navbuts:after {
   content: "";
   position: absolute;
   top: 0;
@@ -72,7 +72,7 @@ li a:after {
   transform-origin: top left;
   transform: scale(0);
 }
-li a:hover:after {
+ul .navbuts:hover:after {
   transition: transform 0.5s;
   transform-origin: bottom right;
   transform: scale(1);

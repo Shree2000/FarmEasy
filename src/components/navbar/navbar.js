@@ -25,11 +25,11 @@ const NavBar = (props) => {
             <h1>FArmeasy.</h1>
             <div class="child">
                 <ul>
-                    <li onClick={onloginclickhandler2}>Log In</li>
+                    <li className={styles.navbuts}  onClick={onloginclickhandler2}>Log In</li>
                     <div className={styles.vl}></div>
-                    <li onClick={onloginclickhandler1} >Sign Up</li>
+                    <li className={styles.navbuts} onClick={onloginclickhandler1} >Sign Up</li>
                     <div class={styles.vl}></div>
-                    <li><Link to='/aboutus'>About Us</Link></li>
+                    <li><Link className={styles.navbuts} to='/aboutus'>About Us</Link></li>
 
                 </ul>
             </div>

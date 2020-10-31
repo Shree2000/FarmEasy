@@ -1,36 +1,23 @@
 
-
-
 class Identify {
     constructor() {
-      this.username ='';
-      this.usertype='';
+      this.mystorage = window.sessionStorage;
     }
-
-
     setData= (name,type)=>{
-        this.username=name;
-        this.usertype=type;
+      let obj={username:name,usertype:type};
+      this.mystorage.setItem('loginData', JSON.stringify(obj));
     }
     removeData = ()=>{
-        this.username ='';
-        this.usertype='';
+      this.mystorage.clear();
     }
-
-    // login() {
-    //   this.authenticated=true;
-    
-    // }
-  
-    // logout(cb) {
-    //   this.authenticated = false;
-    //   cb();
-    // }
-    
-    // isAuthenticated() {
-    //   return this.authenticated;
-    // }
-  }
-  
+    getData= ()=>{
+      if(this.mystorage.getItem('loginData')){
+        let data=this.mystorage.getItem('loginData');
+        data= JSON.parse(data);
+        return data;  
+      }
+      else return "nodata";
+      
+    }
+  } 
   export default new Identify();
-  

@@ -1,8 +1,16 @@
 import React from 'react';
 import  './sidenav.styles.css';
-import {Link} from 'react-router-dom';
-const Sidenav = ()=>
+import Identify from '../../utils/Identify';
+import Auth from '../../utils/auth';
+import {Link , Redirect, withRouter} from 'react-router-dom';
+const Sidenav = (props)=>
 {
+    const Logout = ()=>{
+        Identify.removeData();
+        Auth.logout(()=>{console.log("hi");});
+        props.history.push('/');
+    }
+
     return (
     <div className="dashboard1_container">
     <div className="dashboard1_logo">
@@ -16,7 +24,7 @@ const Sidenav = ()=>
         <Link to='/mycrops' className='dashboard1_item'>My crops</Link>
         <Link to='/postacrop' className='dashboard1_item'>Post a Crop</Link>
         <Link to='/' className='dashboard1_item'>Government Schemes</Link>
-        <p className='dashboard1_item'>Sign Out</p>
+        <p className='dashboard1_item' onClick={Logout}>Sign Out</p>
         
     </div>
     <footer className="dashboard1_footer">
@@ -26,4 +34,4 @@ const Sidenav = ()=>
 )
 }
 
-export default Sidenav;
+export default withRouter(Sidenav);
