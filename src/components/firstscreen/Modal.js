@@ -5,15 +5,14 @@
 import React,{useState} from "react";
 import styles from  "./modalstyles.module.css";
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
+import Auth from '../../utils/auth';
+import Idenity from '../../utils/Identify';
+import {withRouter} from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 import 'react-toastify/dist/ReactToastify.css';
 const Modal = (props) => {
   
-
-  const [signup,setsignup] = useState(false);
-  const [email,changeemail] = useState("");
-  const [password,changepassword] = useState("");
   const [formData, setFormData]= useState({
       username:"",
       password:"",
@@ -22,16 +21,7 @@ const Modal = (props) => {
       usertype:""
   })
 
-//   function emailhandler(e){
-// 	  changeemail(e.target.value);
-//   }
-//   function passwordhandler(e){
-// 	changepassword(e.target.value);
-// 	}
-// 		function signinhandler(e){
-// 	// console.log(email);
-// 	// console.log(password);
-//     }
+
     
         function changeVal(event){
             const {name,value}= event.target;
@@ -51,7 +41,11 @@ const Modal = (props) => {
         console.log(formData);
         axios.post('http://7137aa5b1a55.ngrok.io/register',formData)
           .then(function (response) {
-            console.log(response.data);
+            //if()
+            localStorage.setItem('cookieData',JSON.stringify(response.data));
+            sessionStorage.setItem('Auth','yes');
+            Idenity.setData(response.data.username,response.data.usertype);
+            props.prop.history.push('/try');
           })
           .catch(function (error) {
             console.log(error);
@@ -71,7 +65,7 @@ const Modal = (props) => {
     return <div className={styles.loginbox}>
         <img src={require("../../images/logo.png")}  className={styles.circle_img} />
         <h1 className={styles.loginboxheading}>Register</h1>
-        <p class={styles.cross} onClick={()=>{props.Toggsetter(false)}}>+</p>
+        <p className={styles.cross} onClick={()=>{props.Toggsetter(false)}}>+</p>
         <form action="">
             <p>Username</p>
             <input type="text" name="username" id={uuidv4()} placeholder="Enter Username" onChange={changeVal}  value={formData.username}/>
@@ -85,7 +79,8 @@ const Modal = (props) => {
             <a href="#">Reset Passsword</a>
             <a href="#">Already have an account?</a>
         </form>
+        <ToastContainer />
     </div>
   };
   
-  export default Modal;
+  export default withRouter(Modal);

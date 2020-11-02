@@ -32,9 +32,7 @@ ul {
   font-family: "Unica One", cursive;
 }
 .parent h1:hover {
-  color:#fadcac;
-  /* text-decoration: underline; */
-  border-bottom: 4px solid #fadcac;
+  cursor: pointer;
 }
 ul li {
   margin-left: 10px;
@@ -46,6 +44,7 @@ ul .navbuts {
   text-decoration: none !important;
   color: white;
   letter-spacing: 2px;
+  cursor: pointer;
   position: relative;
   font-size: 20px;
   padding: 10px 20px 10px 20px;

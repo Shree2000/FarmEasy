@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import FarmerRightWrapper from '../../farmer-right-wrapper/farmer-right-wrapper.component';
 import './farmerupload.styles.css';
  import Button from 'react-bootstrap/Button';
+ import Auth from '../../../utils/auth';
  import Form from 'react-bootstrap/Form';
  import axios from 'axios';
  import Modal from 'react-bootstrap/Modal';
@@ -16,6 +17,7 @@ class FarmerUpload extends React.Component{
     constructor()
     {
         super()
+        console.log(Auth.isAuthenticated());
         this.state={
             cropName:'',
             cropPhoto:'',

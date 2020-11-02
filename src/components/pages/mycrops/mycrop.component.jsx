@@ -1,7 +1,6 @@
 import React from 'react';
 import './mycrop.styles.css';
 import Sidenav from '../../sidenavbar/sidenav.component';
-import RightImage from '../../right-image/rightimage.component';
 import Rightimage from '../../right-image/rightimage.component';
 
 class MyCropList extends React.Component{

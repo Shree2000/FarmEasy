@@ -7,14 +7,16 @@ const Sidenav = (props)=>
 {
     const Logout = ()=>{
         Identify.removeData();
-        Auth.logout(()=>{console.log("hi");});
+        sessionStorage.setItem('Auth', "no");
         props.history.push('/');
+        localStorage.removeItem('cookieData');
+        //cookie destroy
     }
 
     return (
     <div className="dashboard1_container">
     <div className="dashboard1_logo">
-        <Link to='/' className='dashboard1_logo_link' to='/' > 
+        <Link to='/try' className='dashboard1_logo_link' > 
         FArMEASY
         </Link>
     </div>

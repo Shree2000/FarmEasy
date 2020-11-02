@@ -12,7 +12,7 @@ class Farmercenter extends React.Component{
     }
     collectdata= ()=>{
        let usedData= Identify.getData();
-       if(usedData!='nodata')
+       if(usedData!=='nodata')
        {
         this.username= usedData.username;
         this.usertype= usedData.usertype;

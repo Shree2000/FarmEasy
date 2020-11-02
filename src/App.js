@@ -1,15 +1,16 @@
 import React from 'react';
 
-import logo from './logo.svg';
+
 import './App.css';
 import FirstScreen from "./components/firstscreen/firstscreen";
-import { ProtectedRoute } from "./utils/protected_route";
+// import { ProtectedRoute } from "./utils/protected_route";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Aboutus from '../src/components/Aboutus/aboutus.component';
+import {ProtectedRoute} from './utils/protected_route';
 import Farmerfirst from './components/pages/Farmerfirst/farmerfirst.page';
 import FarmerUpload from './components/pages/FarmerUpload/farmerupload.component';
 import  MyCropList from './components/pages/mycrops/mycrop.component';
-
+import Error404Page from './components/pages/Error404page/error404.component';
 function App() 
 {
   return (
@@ -17,12 +18,13 @@ function App()
     <div className="App">
        <Switch>
        <Route exact path="/" component={FirstScreen} />
-        <   Route exact path='/mycrops' component={MyCropList} />
-       <  Route exact path='/aboutus' component={Aboutus} />      
-        <  Route exact path="/buyer" component={FirstScreen} />
-        < Route exact path='/try' component={Farmerfirst} />
-        <  Route exact path="/farmer" component={FirstScreen} />
-        <  Route exact path='/postacrop' component={FarmerUpload} />
+        <   ProtectedRoute exact path='/mycrops' component={MyCropList} />
+       <  ProtectedRoute exact path='/aboutus' component={Aboutus} />      
+        <  ProtectedRoute exact path="/buyer" component={FirstScreen} />
+        < ProtectedRoute exact path='/try' component={Farmerfirst} />
+        <  ProtectedRoute exact path="/farmer" component={FirstScreen} />
+        <  ProtectedRoute exact path='/postacrop' component={FarmerUpload} />
+        <Route path='*' component={Error404Page} />
       </Switch>
     </div>
     </BrowserRouter>

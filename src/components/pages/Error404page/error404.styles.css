@@ -1,0 +1,39 @@
+.errorWrapper{
+    height: 100vh;
+    width: 100%;
+    background-size:     cover !important;                      
+    background-repeat:   no-repeat !important;
+    background-position: center center !important;
+}
+.errorHeader{
+    font-size: 60px;
+    position: relative;
+    top: 30px;
+}
+.errorContent{
+    
+    height: 450px;
+    width: 300px;
+    position: relative;
+    top: 100px;
+    left: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+.errorContent p{
+    font-size: 22px;
+    text-align: left;
+}
+.errorButton, .errorLink{
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 20px;
+    margin-left: 2px;
+}
+.errorButton:hover, .errorLink:hover{
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 20px;
+}

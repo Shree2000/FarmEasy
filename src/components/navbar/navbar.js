@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./navstyles.module.css";
-import auth from "../../utils/auth";
 import { Link} from 'react-router-dom';
 
 
@@ -20,15 +19,15 @@ const NavBar = (props) => {
 
 
     return (
-        <div class={styles.parent}>
+        <div className={styles.parent}>
         <nav>
             <h1>FArmeasy.</h1>
-            <div class="child">
+            <div className="child">
                 <ul>
                     <li className={styles.navbuts}  onClick={onloginclickhandler2}>Log In</li>
                     <div className={styles.vl}></div>
                     <li className={styles.navbuts} onClick={onloginclickhandler1} >Sign Up</li>
-                    <div class={styles.vl}></div>
+                    <div className={styles.vl}></div>
                     <li><Link className={styles.navbuts} to='/aboutus'>About Us</Link></li>
 
                 </ul>

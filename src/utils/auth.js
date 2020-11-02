@@ -1,25 +1,25 @@
-import axios from "axios";
 
 
 class Auth {
     constructor() {
-      this.authenticated = false;
+     this.Authenticated=false;
     }
   
     login() {
-      this.authenticated=true;
+      
+      this.Authenticated=true;
     
     }
   
     logout(cb) {
-      this.authenticated = false;
+      this.Authenticated=false;
       cb();
     }
     
     isAuthenticated() {
-      return this.authenticated;
+      return this.Authenticated;  
     }
   }
-  
+
   export default new Auth();
   

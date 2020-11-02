@@ -8,7 +8,7 @@ class Identify {
       this.mystorage.setItem('loginData', JSON.stringify(obj));
     }
     removeData = ()=>{
-      this.mystorage.clear();
+      this.mystorage.removeItem('loginData');
     }
     getData= ()=>{
       if(this.mystorage.getItem('loginData')){
@@ -17,7 +17,6 @@ class Identify {
         return data;  
       }
       else return "nodata";
-      
     }
   } 
   export default new Identify();

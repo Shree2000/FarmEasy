@@ -8,24 +8,12 @@ import Auth from '../../utils/auth';
 import Idenity from '../../utils/Identify';
 const Register = (props) => {
   
-  const [signup,setsignup] = useState(false);
-  const [email,changeemail] = useState("");
-  const [password,changepassword] = useState("");
   const [formData, setFormData] = useState({
     username:"",
     password:""
   })
 
-  // function emailhandler(e){
-	//   changeemail(e.target.value);
-  // }
-  // function passwordhandler(e){
-	// changepassword(e.target.value);
-	// }
-	// 	function signinhandler(e){
-	// console.log(email);
-	// console.log(password);
-  // }
+ 
   
 
   function changeHandler(event)
@@ -41,17 +29,19 @@ const Register = (props) => {
 
   function login()
   {
-    
-   
+    // localStorage.setItem('cookieData',JSON.stringify({username:'abc', usertype:'sdhv'})); // cookie change
+    // sessionStorage.setItem('Auth','yes');
+    // Idenity.setData(response.data.username,response.data.usertype); 
+    // props.prop.history.push('/try');
+
     axios.post('http://fb567252f1fa.ngrok.io/login',formData)
       .then(function (response) {
         console.log(response.data);
-        if(response.data.authenticated == "True"){
-          Auth.login();
-          if(response.data.usertype=='Farmers'){
-             Idenity.setData(response.data.username,response.data.usertype); 
-             props.prop.history.push('/try');
-          }
+        if(response.data.authenticated === "True"){
+          localStorage.setItem('cookieData',JSON.stringify(response.data)); // cookie change
+          sessionStorage.setItem('Auth','yes');
+          Idenity.setData(response.data.username,response.data.usertype); 
+          props.prop.history.push('/try');
         }else{
           console.log(Auth.isAuthenticated());
         }
@@ -68,7 +58,7 @@ const Register = (props) => {
 
 
     return <div className={styles.loginbox}>
-    <img src={require("../../images/logo.png")} className={styles.circle_img} />
+    <img src={require("../../images/logo.png")} alt='logo' className={styles.circle_img} />
     <p className={styles.cross} onClick={()=>{props.Regsetter(false)}}>+</p>
     <h1 className={styles.loginheader}>Login</h1>
     <form action="">
