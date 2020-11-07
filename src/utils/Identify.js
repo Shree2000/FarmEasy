@@ -2,6 +2,7 @@
 class Identify {
     constructor() {
       this.mystorage = window.sessionStorage;
+      this.api = "http://433a5c18de68.ngrok.io/";
     }
     setData= (name,type)=>{
       let obj={username:name,usertype:type};

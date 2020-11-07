@@ -1,0 +1,59 @@
+.top_section_outer {
+  padding: 2vh 0;
+  text-align: left;
+}
+.filterbuttondiv {
+  margin-left: 5vw;
+  display: inline-block;
+}
+
+.filterbutton {
+  padding: 1vh 2vw;
+}
+.filtertext {
+  font-size: 1.2rem;
+}
+.searchbardiv {
+  display: inline-block;
+  width: 60vw;
+  margin-left: 6vw;
+}
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
+
+.sortbydiv {
+  display: inline-block;
+  margin-left: 5vw;
+}
+.sortbybutton {
+  padding: 1vh 1vw;
+}
+.sortbytext {
+  font-size: 1.2rem;
+}
+.filter_title {
+  font-size: 1.2rem;
+}
+.filter_option {
+  /* font-size: 1rem; */
+  margin-left: 1vw;
+  /* font-weight: 300; */
+}
+.filter_optiontext {
+  margin-left: 1vw;
+  font-size: 1rem;
+}

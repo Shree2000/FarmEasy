@@ -32,7 +32,7 @@ const FirstScreen = (props) => {
     }
     function notify()
     {
-      toast.info("Registered Succesfully!");
+      toast("Registered Succesfully!");
     } 
     return (
        <div className={styles.parent} >

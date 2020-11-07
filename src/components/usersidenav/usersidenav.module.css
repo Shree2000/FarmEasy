@@ -1,0 +1,23 @@
+.navouter {
+  height: 100vh;
+  width: 20%;
+  background-color: wheat;
+  z-index: 3;
+  display: inline-block;
+  position: fixed;
+  left: 0;
+}
+.navtitle {
+  font-size: 2.5rem;
+  color: black;
+  font-style: normal;
+  font-weight: normal;
+  font-family: Unica One;
+  display: inline-block;
+  color: #ffffff;
+}
+.hamburger {
+  display: inline-block;
+  margin-right: 3vw;
+  color: #ffffff;
+}

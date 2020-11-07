@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+.cartlist {
+  width: 60%;
+  margin-top: 5vh;
+  text-align: left;
+  padding-left: 5vw;
+}
+.shoppingtitle {
+  font-size: 2rem;
+  font-family: "Roboto", sans-serif;
+}
+.shoppingsubtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  display: inline-block;
+  width: 85%;
+}
+/* .dropbtn {
+  width: 10vw;
+} */
+.sortbydiv {
+  display: inline-block;
+  /* width: 30%; */
+  /* margin-left: 27vw; */
+  /* position: relative; */
+  /* right : -10vw; */
+}
+.sortbytext {
+  font-size: 1.2rem;
+}
+.payment {
+  position: fixed;
+  right: 5vw;
+  top: 15vh;
+  width: 30%;
+  height: 80vh;
+  background-color: #565cb9;
+  /* margin: 5vh 0 0 0; */
+  border-radius: 20px;
+}

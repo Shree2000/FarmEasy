@@ -1,0 +1,18 @@
+.firstpageouter {
+  height: 90vh;
+  /* background-color: #aed9e0; */
+  /* text-align: center; */
+}
+.datatable {
+  width: 60vw;
+  margin: 10vh 20vw;
+}
+
+.buttondiv {
+  display: flex;
+  justify-content: center;
+}
+.homebutton {
+  width: 20vw;
+  display: inline-block;
+}

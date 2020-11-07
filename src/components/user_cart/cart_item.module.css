@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
+
+.singlecartitem {
+  margin: 2vh 0;
+  height: 15vh;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  font-family: "Noto Sans JP", sans-serif;
+}
+.cartimgdiv {
+  /* background-color: red; */
+  width: 15%;
+  text-align: center;
+  overflow-x: hidden;
+}
+.cart_item_img {
+  height: 10vh;
+}
+.carttitlediv {
+  width: 40%;
+  /* background-color: red; */
+}
+.carttitle {
+  font-size: 1.8rem;
+}
+.cartsubtitle {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.quantitydiv {
+  width: 15%;
+}
+.cartquantity {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.costdiv {
+  width: 20%;
+}
+.cartcost {
+  font-size: 1.4rem;
+  font-weight: bolder;
+}
+.trashdiv {
+  width: 10%;
+}
+.trashicon:hover {
+  color: #c82333;
+  transform: scale(1.1);
+}

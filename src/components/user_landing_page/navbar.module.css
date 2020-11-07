@@ -1,0 +1,56 @@
+/* .navwrapper {
+  display: inline-block;
+  width: 80%;
+} */
+.outnav {
+  height: 10vh;
+  background-color: rgba(210, 255, 194, 0.4);
+  /* opacity: 0.28; */
+  padding: 0 0 0 3vw;
+  display: flex;
+  align-items: center;
+}
+.marginclass {
+  margin-left: 20vw;
+}
+.navheader {
+  display: inline-block;
+}
+.navtitle {
+  font-size: 2.5rem;
+  color: black;
+  font-style: normal;
+  font-weight: normal;
+  font-family: Unica One;
+  display: inline-block;
+}
+
+.navoptions {
+  display: inline-block;
+  text-align: right;
+}
+.navunit {
+  display: inline-block;
+  text-align: center;
+}
+.navopt {
+  color: black;
+  font-size: 1.2rem;
+  margin: 0 2vw;
+}
+.navicon {
+  color: #565cb9;
+}
+.hamburger {
+  display: inline-block;
+  margin-right: 3vw;
+}
+.sidenav {
+  height: 100vh;
+  width: 20%;
+  background-color: red;
+  z-index: 3;
+  display: inline-block;
+  position: fixed;
+  left: 0;
+}

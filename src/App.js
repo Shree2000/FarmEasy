@@ -11,6 +11,8 @@ import Farmerfirst from './components/pages/Farmerfirst/farmerfirst.page';
 import FarmerUpload from './components/pages/FarmerUpload/farmerupload.component';
 import  MyCropList from './components/pages/mycrops/mycrop.component';
 import Error404Page from './components/pages/Error404page/error404.component';
+import UserScreen from "./components/user_landing_page/user_firstscreen";
+import CartOuter from "./components/user_cart/cart_outer";
 function App() 
 {
   return (
@@ -24,6 +26,9 @@ function App()
         < ProtectedRoute exact path='/try' component={Farmerfirst} />
         <  ProtectedRoute exact path="/farmer" component={FirstScreen} />
         <  ProtectedRoute exact path='/postacrop' component={FarmerUpload} />
+        <Route exact path="/user" component={UserScreen} />
+        <Route exact path="/cart" component={CartOuter} />
+
         <Route path='*' component={Error404Page} />
       </Switch>
     </div>
