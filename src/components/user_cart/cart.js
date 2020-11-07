@@ -4,7 +4,7 @@ import styles from "./cart.module.css";
 import CartItem from "./cart_item";
 import axios from "axios";
 import Identity from '../../utils/Identify';
-
+import Razorpay from "razorpay";
 
 const cart_items = [
     {
@@ -109,6 +109,89 @@ function Cart(props)
         setcart(newprods);
     }
 
+   
+
+   
+
+    function cartcheckout(){
+   
+        const apiurl2 = Identity.api + "payments";
+        var order_id = "";
+        axios.post(apiurl2, {
+           "customer_name" : "John",
+           "amount" : 4000,
+          })
+          .then(function (response) {
+            console.log(response);
+            order_id = response.data.id;
+            console.log("id");
+            console.log(order_id);
+            var options = {
+              "key_id": "rzp_test_DIxCWuLnWg6dqh", 
+              "key_secret" : "keuRd34N9FrGSY7vtMoRp5YH",
+              "amount": "50000", 
+              "currency": "INR",
+              "name": "FarmEasy",
+              "description": "Test Transaction",
+              "order_id": order_id, 
+              "handler": function (response){
+                  const apiurl3 = Identity.api + "payments";
+                  axios.post(apiurl3, {
+                    "customer_name" : "John",
+                    "payment_id" : response.razorpay_payment_id,
+                    "order_id" : response.razorpay_order_id,
+                    "signature" : response.razorpay_signature
+                  })
+                  .then(function (res) {
+                    console.log(res.status);
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                  });
+              },
+              "prefill": {
+                  "name": "Gaurav Kumar",
+                  "email": "gaurav.kumar@example.com",
+                  "contact": "9999999999",
+                //   "method": "card",
+                //   "card[name]": "Gaurav Kumar",
+                //   "card[number]": "510406000008",
+                //   "card[expiry]": "12/21",
+                //   "card[cvv]": "123"
+                },
+              "notes": {
+                  "address": "Razorpay Corporate Office"
+              },
+              "theme": {
+                  "color": "#218838"
+              }
+          };
+          const rzp1 = new window.Razorpay(options);
+          rzp1.open();
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+         
+        // var rzp1 = new Razorpay(options);
+
+    }
+
+    function paymenthandler(){
+        const apiurl = Identity.api + "cartitems";
+        axios.post(apiurl, {
+            "customer_name" : "John"
+          })
+          .then(function (response) {
+            console.log(response.data);
+            setcart(response.data.cartlist);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
+    }
+
 
    
     return(
@@ -138,6 +221,8 @@ function Cart(props)
             })}
             </div>
             <div className={styles.payment}>
+                <button className={"btn btn-success"} onClick={cartcheckout}>Cart Checkout</button>
+                <button className={"btn btn-warning"} onClick={paymenthandler}>Payment Handler</button>
 
             </div>
             

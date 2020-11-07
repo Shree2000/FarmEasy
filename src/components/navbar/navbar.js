@@ -24,9 +24,9 @@ const NavBar = (props) => {
             <h1>FArmeasy.</h1>
             <div className="child">
                 <ul>
-                    <li className={styles.navbuts}  onClick={onloginclickhandler2}>Log In</li>
+                    <li  onClick={onloginclickhandler2}><Link  className={styles.navbuts}>Log In</Link></li>
                     <div className={styles.vl}></div>
-                    <li className={styles.navbuts} onClick={onloginclickhandler1} >Sign Up</li>
+                    <li  onClick={onloginclickhandler1} ><Link  className={styles.navbuts}>Sign Up</Link></li>
                     <div className={styles.vl}></div>
                     <li><Link className={styles.navbuts} to='/aboutus'>About Us</Link></li>
 
