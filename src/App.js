@@ -23,7 +23,7 @@ function App()
         <   ProtectedRoute exact path='/mycrops' component={MyCropList} />
        <  ProtectedRoute exact path='/aboutus' component={Aboutus} />      
         <  ProtectedRoute exact path="/buyer" component={FirstScreen} />
-        < ProtectedRoute exact path='/try' component={Farmerfirst} />
+        < Route exact path='/try' component={Farmerfirst} />
         <  ProtectedRoute exact path="/farmer" component={FirstScreen} />
         <  ProtectedRoute exact path='/postacrop' component={FarmerUpload} />
         <Route exact path="/user" component={UserScreen} />

@@ -34,7 +34,7 @@ const Register = (props) => {
     // Idenity.setData(response.data.username,response.data.usertype); 
     // props.prop.history.push('/try');
 
-    axios.post('http://fb567252f1fa.ngrok.io/login',formData)
+    axios.post(Idenity.api + 'login',formData)
       .then(function (response) {
         console.log(response.data);
         if(response.data.authenticated === "True"){

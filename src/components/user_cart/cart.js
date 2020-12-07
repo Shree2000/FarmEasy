@@ -221,9 +221,51 @@ function Cart(props)
             })}
             </div>
             <div className={styles.payment}>
-                <button className={"btn btn-success"} onClick={cartcheckout}>Cart Checkout</button>
-                <button className={"btn btn-warning"} onClick={paymenthandler}>Payment Handler</button>
-
+            <div className={styles.paymentwrapper}>
+                <div className={styles.checkoutheaderdiv}> 
+                <h1 className={styles.checkouth1}>Checkout : </h1>
+                </div>
+            <div className={styles.onerow}>
+                <div className={styles.name}>
+                    <h1 className={styles.nameh1}>Subtotal</h1>
+                </div>
+                <div className={styles.amount}>
+                    <h1 className={styles.amounth1}>Rs 300</h1>
+                </div>
+            </div >
+            <div className={styles.onerow}>
+                <div className={styles.name}>
+                    <h1 className={styles.nameh1}>Taxes</h1>
+                </div>
+                <div className={styles.amount}>
+                    <h1 className={styles.amounth1}>Rs 100</h1>
+                </div>
+            </div >
+            <div className={styles.onerow}>
+                <div className={styles.name}>
+                    <h1 className={styles.nameh1}>Delivery</h1>
+                </div>
+                <div className={styles.amount}>
+                    <h1 className={styles.amounth1}>Rs 50</h1>
+                </div>
+            </div >
+            <hr className={styles.dividerhr} />
+            <div className={styles.onerow}>
+                <div className={styles.name}>
+                    <h1 className={styles.totalnameh1}>Total</h1>
+                </div>
+                <div className={styles.amount}>
+                    <h1 className={styles.totalamounth1}>Rs 450</h1>
+                </div>
+            </div >
+            <div className={styles.insurance}>
+            <input type="checkbox" aria-label="Checkbox for following text input"></input>
+            <h1 className={styles.insuranceh1}>Add Insurance worth Rs. 5 to cover the delivery</h1>
+            </div>
+                <button className={styles.checkoutbutton} onClick={cartcheckout}>
+                    <h1 className={styles.cartbuttontext}>Cart Checkout</h1>
+                    </button>
+            </div>
             </div>
             
         </div>

@@ -32,10 +32,107 @@
 .payment {
   position: fixed;
   right: 5vw;
-  top: 15vh;
+  top: 50%;
+  transform: translateY(-45%);
   width: 30%;
-  height: 80vh;
+  /* height: 80vh; */
   background-color: #565cb9;
   /* margin: 5vh 0 0 0; */
   border-radius: 20px;
+  text-align: center;
+}
+.paymentwrapper {
+  /* height: 80vh; */
+  position: relative;
+  padding: 5vh 0 5vh;
+  text-align: center;
+}
+
+.checkoutbutton {
+  width: 85%;
+  padding: 2vh 3vw;
+  border: none;
+  outline: none;
+  background-color: #4ee1c1;
+  margin-top: 5vh;
+  border-radius: 10px;
+  /* position: relative;
+  bottom: 10vh; */
+}
+.cartbuttontext {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.onerow {
+  width: 100%;
+  margin-top: 3vh;
+}
+.name {
+  /* display: inline-flex;
+  justify-content: start;
+  align-items: flex-start; */
+  width: 50%;
+  display: inline-block;
+  text-align: left;
+}
+.amount {
+  /* display: inline-flex; */
+  width: 50%;
+  display: inline-block;
+  text-align: right;
+}
+.nameh1 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-weight: 500;
+  margin-left: 10%;
+}
+.amounth1 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-weight: 500;
+  margin-right: 10%;
+}
+.totalnameh1 {
+  font-size: 1.8rem;
+  color: #ffffff;
+  font-weight: bold;
+  margin-left: 10%;
+}
+.totalamounth1 {
+  font-size: 1.8rem;
+  color: #ffffff;
+  font-weight: bold;
+  margin-right: 10%;
+}
+.dividerhr {
+  width: 80%;
+  margin: 3vh 10%;
+  background-color: #ffffff;
+  height: 0.2vh;
+  opacity: 0.5;
+}
+.checkoutheaderdiv {
+  text-align: left;
+}
+.checkouth1 {
+  font-size: 2.2rem;
+  color: #4ee1c1;
+  font-weight: bold;
+  margin-left: 5%;
+}
+.insurance {
+  text-align: left;
+  margin-left: 5%;
+  margin-top: 2vh;
+}
+.insuranceh1 {
+  display: inline-block;
+  margin-left: 5%;
+  margin-right: 5%;
+  font-size: 1.1rem;
+  color: #ffffff;
+  opacity: 0.6;
 }
