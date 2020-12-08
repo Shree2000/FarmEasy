@@ -21,7 +21,7 @@
     cursor: pointer;
     transition: all 0.3s;
   }
-  .subscribe_text.checked{
+  .subscribe_text.checked:hover, .subscribe_text:hover{
     text-decoration: underline;
   }
   

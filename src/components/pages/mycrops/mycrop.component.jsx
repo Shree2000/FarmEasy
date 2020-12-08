@@ -7,11 +7,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import _ from "lodash";
 import MyCropListComp from '../../cropOrders/cropOrders.component';
+import Identify from '../../../utils/Identify';
 
 class MyCropList extends React.Component{
     constructor(){
         super();
-
+        this.username='';
+        this.usertype='';
         this.state={
             arr:[],
             total_Orders:0, 
@@ -55,9 +57,21 @@ class MyCropList extends React.Component{
             toast.error("Something went wrong! Please, try again.")
         })
     }
-
+    collectdata= ()=>{
+        let usedData= Identify.getData();
+        if(usedData!=='nodata')
+        {
+         this.username= usedData.username;
+         this.usertype= usedData.usertype;
+        }
+        else{
+            this.username='';
+            this.usertype='';
+        }
+     }
 
     render(){
+        this.collectdata();
         return (
             <div>
                 <Sidenav />
@@ -75,7 +89,7 @@ class MyCropList extends React.Component{
                     </div>
                 </div>
                 <Rightimage />
-                <ToastContainer />
+                <ToastContainer position="bottom-right" pauseOnHover={false} />
             </div>
         )
     }

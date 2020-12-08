@@ -1,12 +1,5 @@
 
-.gov_scheme_index{
-    border: 1px solid;
-    height:100vh;
-    
-}
-.gov_scheme_content{
-    border: 1px solid;
-    height:100vh;
+.schemes_maincontent{
     
 }
 
@@ -14,9 +7,3 @@
 
 
 
-
-@media(max-width:600px){
-    .gov_scheme_index{
-        height: 40vh;
-    }
-}

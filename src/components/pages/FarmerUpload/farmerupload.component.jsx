@@ -4,7 +4,6 @@ import Sidenav from '../../sidenavbar/sidenav.component';
 import Rightimage from '../../right-image/rightimage.component';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import FarmerRightWrapper from '../../farmer-right-wrapper/farmer-right-wrapper.component';
 import './farmerupload.styles.css';
  import Button from 'react-bootstrap/Button';
  import Auth from '../../../utils/auth';
@@ -17,6 +16,8 @@ class FarmerUpload extends React.Component{
     constructor()
     {
         super()
+        this.username='';
+        this.usertype='';
         //console.log(Auth.isAuthenticated());
         this.state={
             cropName:'Buckwheat',
@@ -75,16 +76,28 @@ class FarmerUpload extends React.Component{
         });   
        // (this.success && this.showhandle());
     }
-
+    collectdata= ()=>{
+        let usedData= Identify.getData();
+        if(usedData!=='nodata')
+        {
+         this.username= usedData.username;
+         this.usertype= usedData.usertype;
+        }
+        else{
+            this.username='';
+            this.usertype='';
+        }
+     }
     render()
     {
+        this.collectdata();
         return (
 
             <div className="wrapper">
                 <Sidenav />
                 <div className="contentArea">
                 <h1 className='farmerWelcome'>Upload a crop,</h1>
-                <p className='farmermsg2'>Farmer X</p>
+                <p className='farmermsg2'>{this.username?this.username:"Farmer X"}</p>
                 <div className="formWrapper">
                     <Form onSubmit={this.handleSubmit}>
                     <Form.Label>Select the crop</Form.Label>
@@ -147,6 +160,7 @@ class FarmerUpload extends React.Component{
                     closeOnClick
                     rtl={false}
                     draggable
+                    pauseOnHover={false}
                 />
                 </div>
         )
