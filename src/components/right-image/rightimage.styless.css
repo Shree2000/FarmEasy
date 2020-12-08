@@ -4,6 +4,7 @@
 }
 .treediv{
     height: 100vh;
+    
     position: fixed;
     top: 0;
     right: 0;
@@ -16,4 +17,9 @@
     position: absolute;
     bottom: 0;
     left: -45px;
+}
+@media (max-width:600px){
+    .righttree, .hidingdiv{
+        display: none;
+    }
 }

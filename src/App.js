@@ -13,6 +13,7 @@ import  MyCropList from './components/pages/mycrops/mycrop.component';
 import Error404Page from './components/pages/Error404page/error404.component';
 import UserScreen from "./components/user_landing_page/user_firstscreen";
 import CartOuter from "./components/user_cart/cart_outer";
+import GovernmentSchemes from './components/pages/govmntSchemes/govmntschemes';
 function App() 
 {
   return (
@@ -21,10 +22,11 @@ function App()
        <Switch>
        <Route exact path="/" component={FirstScreen} />
         <   ProtectedRoute exact path='/mycrops' component={MyCropList} />
-       <  ProtectedRoute exact path='/aboutus' component={Aboutus} />      
+       <  Route exact path='/aboutus' component={Aboutus} />      
         <  ProtectedRoute exact path="/buyer" component={FirstScreen} />
         < Route exact path='/try' component={Farmerfirst} />
         <  ProtectedRoute exact path="/farmer" component={FirstScreen} />
+        <  Route exact path="/govmntscheme" component={GovernmentSchemes} />
         <  ProtectedRoute exact path='/postacrop' component={FarmerUpload} />
         <Route exact path="/user" component={UserScreen} />
         <Route exact path="/cart" component={CartOuter} />

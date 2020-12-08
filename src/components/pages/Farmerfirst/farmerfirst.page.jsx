@@ -8,10 +8,12 @@ class Farmerfirst extends React.Component{
     constructor()
     {
         super()
-        console.log(Auth.isAuthenticated());
+        // console.log(Auth.isAuthenticated());
         this.state={}
     }
-    
+    componentWillMount(){
+        //get request
+    }
 
     render(){
         return <div className="wrapper">

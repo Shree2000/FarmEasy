@@ -9,13 +9,14 @@
     margin-left: 15px;
     z-index: 3;
 }
-.ContentArea h1{
+.farmerWelcome{
     font-size: 40px;
     position: relative;
     right: 10px;
     width: 40%;
+    left: 5px;
     color: #77a058;
-    top: 45px;
+    top: 55px;
     font-family: 'Slabo 27px', serif;
 }
 .farmermsg{
@@ -61,4 +62,51 @@
     top: 50px;
     left: 35px;
     color: #382933;
+}
+.lineChartWrapper{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 300px;
+    height: 200px;
+    width: 650px;
+    left: 65px;
+    align-items: center;
+    justify-content: flex-end;
+}
+.lineChartWrapper h1{
+    position: relative;
+    top: 20px;
+    font-size: 20px;
+    color: #42427d;
+}
+.doughnutWrapper{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    top: 400px;
+    border-bottom: 40px;
+}
+.doughnutWrapper h1{
+    font-size: 20px;
+    position: relative;
+    top: 20px;
+    color: #42427d;
+}
+.subscribe_content{
+    position: relative;
+    top: 480px;
+    margin: 05px 0 10px 0;
+}
+.space_bottom{
+    height: 20px;
+    width: 100%;
+}
+
+@media(max-width:600px){
+    .lineChartWrapper, .doughnutWrapper{
+        display: none;
+    }
 }

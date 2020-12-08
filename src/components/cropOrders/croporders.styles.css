@@ -1,0 +1,72 @@
+.farmerOrderWrapper{
+    height: 120px;
+    width: 450px;
+    border: 1.2px solid rgb(60,66,87);
+    color: #3e5b23;
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 15px;
+    margin: 10px 0 0 0;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+.farmerOrderWrapper::before{
+    content:'';
+    overflow: hidden;
+    position: absolute;
+    height: 100%;
+    width: 5px;
+    background-color: #ec524b;
+    left: -10px;
+    top: 0;
+    border-radius: 0px;
+    transition: all 0.1s;
+}
+
+.farmerOrderWrapper.comp::before{
+    content: '';
+    overflow: hidden;
+    position: absolute;
+    height: 100%;
+    width: 5px;
+    background-color: #77a058;
+    left: -10px;
+    top: 0;
+    border-radius: 0px;
+    transition: all 0.1s;
+}
+
+.farmerOrderDetails{
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 30px;
+    width: 70%;
+    margin: 0 0 0 10px;
+
+}
+.farmerOrderHeader{
+    margin:0 0 0 10px;
+}
+.farmerOrderAddress{
+    margin: 0 0 0 10px;
+}
+.farmerOrderWrapper h6{
+    margin: 5px 0 0 10px;
+    font-size: 13px;
+    color: #ec524b;
+}
+.farmerOrderWrapper.comp h6{
+    margin: 5px 0 0 10px;
+    font-size: 13px;
+    color:green;
+}
+.farmerOrderWrapper:hover{
+    box-shadow: 0 0 0 1px rgba(50,50,93,0.01), 0 7px 14px 0 rgba(50,50,93,0.1), 0 3px 6px 0 rgba(0,0,0,0.02);
+
+}
+

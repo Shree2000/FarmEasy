@@ -17,14 +17,14 @@ class FarmerUpload extends React.Component{
     constructor()
     {
         super()
-        console.log(Auth.isAuthenticated());
+        //console.log(Auth.isAuthenticated());
         this.state={
-            cropName:'',
+            cropName:'Buckwheat',
             cropPhoto:'',
             cropQuantity:'',
             cropPrice:'',
-            cropLocation:'',
-            show:false
+            cropDescription:'',
+            cropHarvest:'',
         }
     }
     handleShow = () => this.setState({show:true});
@@ -37,36 +37,43 @@ class FarmerUpload extends React.Component{
         const {name,value} =event.target;
         this.setState({[name]:value});
     }
-    success=true;
     handleSubmit=event=>{
         event.preventDefault();
-        console.log(this.success, this.cropAdded);  
-        axios.post('http://7137aa5b1a55.ngrok.io/register',{
+        let farmerName= localStorage.getItem('cookieData');
+        farmerName=JSON.parse(farmerName);
+        let cropData={
             availability: this.state.cropQuantity,
-            description:"Potato",
+            description:this.state.cropDescription,
             price:this.state.cropPrice,
-            harvestseason:"Summer",
+            harvestseason: this.state.cropHarvest,
             imageurl:'abcd',
             productcategory:this.state.cropName,
-            sellername:Identify.username
-        })
-          .then(function (response) {
+            sellername:farmerName.username,
+        }
+        console.log(cropData);  
+        axios.post('http://149107dd4efc.ngrok.io/addproduct',cropData)
+          .then( response => {
             console.log(response.data);
+            if(response.data.message!="Product Category already exists") toast.success("Product has been added!");
+            else{
+                toast.warning("Product already exists");
+            }
           })
           .catch(function (error) {
             console.log(error);
+            toast.error("Try adding again!");
           });
         this.setState({
-            cropName:'',
+            cropName:'Buckwheat',
             cropPhoto:'',
             cropQuantity:'',
             cropPrice:'',
-            cropLocation:''
+            cropDescription:'',
+            cropHarvest:'',
+        },()=>{
+            console.log(this.state);     
         });   
-        console.log(this.state);     
-       //toast.success("Product has been added!");
-        //toast.error("Try adding again!");
-        (this.success && this.showhandle());
+       // (this.success && this.showhandle());
     }
 
     render()
@@ -76,8 +83,8 @@ class FarmerUpload extends React.Component{
             <div className="wrapper">
                 <Sidenav />
                 <div className="contentArea">
-                <h1>Upload a crop,</h1>
-                <p className='farmermsg'>Farmer X</p>
+                <h1 className='farmerWelcome'>Upload a crop,</h1>
+                <p className='farmermsg2'>Farmer X</p>
                 <div className="formWrapper">
                     <Form onSubmit={this.handleSubmit}>
                     <Form.Label>Select the crop</Form.Label>
@@ -100,8 +107,12 @@ class FarmerUpload extends React.Component{
                     <Form.Control name='cropPrice'  value={this.state.cropPrice} onChange={this.handleChange} type="text" placeholder="price/kg" />
                     </Form.Group>
                     <Form.Group controlId="exampleForm2.ControlTextarea1">
-                    <Form.Label>Farm Location</Form.Label>
-                    <Form.Control name='cropLocation' value={this.state.cropLocation} onChange={this.handleChange} as="textarea" rows={2} />
+                    <Form.Label>Farm Description</Form.Label>
+                    <Form.Control name='cropDescription' value={this.state.cropDescription} onChange={this.handleChange} as="textarea" rows={2} />
+                    </Form.Group>
+                    <Form.Group controlId="exampleForm.ControlInput3">
+                    <Form.Label>Harvest Season</Form.Label>
+                    <Form.Control name='cropHarvest'  value={this.state.cropHarvest} onChange={this.handleChange} type="text" placeholder="Harvest Season" />
                     </Form.Group>
                     <Button onSubmit={this.handleSubmit} variant="success" type="submit">
                     Submit

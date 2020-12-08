@@ -1,0 +1,33 @@
+.subscribe_box{
+    height: 30px;
+    width: 30px;
+    transform: rotate(0)translate(0);
+    transition: transform 0.3s, border-color 0.1s, width 0.1s;
+    margin-top: 5px;
+    border: 2px solid;
+    cursor: pointer;
+  }
+  .subscribe_wrapper{
+    
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5vh  ;
+    color: #3e5b23;
+    
+  }
+  .subscribe_text{
+    font-size: 22px;
+    margin: 5px 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .subscribe_text.checked{
+    text-decoration: underline;
+  }
+  
+  .subscribe_box.checked{
+    transform:rotate(45deg)translate(0px, -8px);
+    width: 10px;
+    border-top-color:transparent;
+    border-left-color: transparent; 
+  }

@@ -41,7 +41,7 @@ const Register = (props) => {
           localStorage.setItem('cookieData',JSON.stringify(response.data)); // cookie change
           sessionStorage.setItem('Auth','yes');
           Idenity.setData(response.data.username,response.data.usertype); 
-          if(response.data.usertype === "farmers"){
+          if(response.data.usertype === "Farmers"){
             props.prop.history.push('/try');
           }else{
             props.prop.history.push('/user');

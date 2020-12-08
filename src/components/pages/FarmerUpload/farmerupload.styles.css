@@ -4,9 +4,8 @@
     height: 400px;
     width: 470px;
     /* margin: auto; */
-    
     position: relative;
-    top: 10px;
+    top: 30px;
     
 }
 .contentArea{
@@ -21,7 +20,7 @@
     margin-left: 55px;
     z-index: 3;
 }
-.contentArea h1{
+.farmerWelcome{
     font-size: 40px;
     color: #77a058;
     position: relative;
@@ -30,14 +29,14 @@
     top: 45px;
     font-family: 'Slabo 27px', serif;
 }
-.farmermsg{
+.farmermsg2{
     position: relative;
     font-family: 'Slabo 27px', serif;
     color: #77a058;
     font-size: 35px;
     width: 40%;
-    left: 140px;
-    top: 25px;
+    left: 0px;
+    top: 30px;
 }
 
 .form-control:focus{ border-width: 3px;border-color: #379683;  box-shadow: none; -webkit-box-shadow: none;} 
