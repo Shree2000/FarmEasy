@@ -6,86 +6,15 @@ import axios from "axios";
 import Identity from '../../utils/Identify';
 import Razorpay from "razorpay";
 
-const cart_items = [
-    {
-        cropname : "Corn",
-        img : "../../../images/corn.png",
-        rating : 4.4 ,
-        price : 200,
-        quantity : 1000,
-        seller : "Akash Khurana",
-        farm_loaction : "Mumbai",
-        harvest : "Summer 2020",
-    },
-    {
-        cropname : "Corn",
-        img : "../../../images/corn.png",
-        rating : 4.4 ,
-        price : 200,
-        quantity : 1000,
-        seller : "Akash Khurana",
-        farm_loaction : "Mumbai",
-        harvest : "Summer 2020",
-    }, {
-        cropname : "Corn",
-        img : "../../../images/corn.png",
-        rating : 4.4 ,
-        price : 200,
-        quantity : 1000,
-        seller : "Akash Khurana",
-        farm_loaction : "Mumbai",
-        harvest : "Summer 2020",
-    }, {
-        cropname : "Corn",
-        img : "../../../images/corn.png",
-        rating : 4.4 ,
-        price : 200,
-        quantity : 1000,
-        seller : "Akash Khurana",
-        farm_loaction : "Mumbai",
-        harvest : "Summer 2020",
-    }, {
-        cropname : "Corn",
-        img : "../../../images/corn.png",
-        rating : 4.4 ,
-        price : 200,
-        quantity : 1000,
-        seller : "Akash Khurana",
-        farm_loaction : "Mumbai",
-        harvest : "Summer 2020",
-    }, {
-        cropname : "Corn",
-        img : "../../../images/corn.png",
-        rating : 4.4 ,
-        price : 200,
-        quantity : 1000,
-        seller : "Akash Khurana",
-        farm_loaction : "Mumbai",
-        harvest : "Summer 2020",
-    }, {
-        cropname : "Corn",
-        img : "../../../images/corn.png",
-        rating : 4.4 ,
-        price : 200,
-        quantity : 1000,
-        seller : "Akash Khurana",
-        farm_loaction : "Mumbai",
-        harvest : "Summer 2020",
-    },
-    {
-        cropname : "Corn",
-        img : "../../../images/corn.png",
-        rating : 4.4 ,
-        price : 200,
-        quantity : 1000,
-        seller : "Akash Khurana",
-        farm_loaction : "Mumbai",
-        harvest : "Summer 2020",
-    },
-]
+
 function Cart(props)
 {
     const [cartprods,setcart] = useState([]);
+    const [subtotal,setsubtotal] = useState(0);
+    const [grandtotal,setgrandtotal] = useState(0);
+    const [ischecked,setchecked] = useState(false);
+
+    
 
     useEffect(() => {
         const apiurl = Identity.api + "cartitems";
@@ -96,17 +25,30 @@ function Cart(props)
           .then(function (response) {
             console.log(response.data);
             setcart(response.data.cartlist);
+            var totalcost = 0;
+            response.data.cartlist.map((single_crop,index) => {
+                // console.log(typeof(single_crop.productcost));
+                // console.log(typeof(single_crop.productquantity));
+                totalcost =totalcost + single_crop.productcost*single_crop.productquantity
+            })
+            console.log(totalcost);
+            setsubtotal(totalcost);
+            setgrandtotal(totalcost*1.18 + 50);
           })
           .catch(function (error) {
             console.log(error);
           });
+         
       }, []);
 
-    function deletefunction(prodname,seller){
+    function deletefunction(prodname,seller,quantity,price){
         const newprods = cartprods.filter( (oneobject)=> {
             return (oneobject.productcategory != prodname || oneobject.sellername != seller);
-        })
+        });
         setcart(newprods);
+        setsubtotal(subtotal - quantity*price);
+        setgrandtotal((subtotal - quantity*price)*1.18 + 50);
+
     }
 
    
@@ -119,7 +61,7 @@ function Cart(props)
         var order_id = "";
         axios.post(apiurl2, {
            "customer_name" : "John",
-           "amount" : 4000,
+           "amount" : grandtotal+1,
           })
           .then(function (response) {
             console.log(response);
@@ -135,7 +77,7 @@ function Cart(props)
               "description": "Test Transaction",
               "order_id": order_id, 
               "handler": function (response){
-                  const apiurl3 = Identity.api + "payments";
+                  const apiurl3 = Identity.api + "orderplaced";
                   axios.post(apiurl3, {
                     "customer_name" : "John",
                     "payment_id" : response.razorpay_payment_id,
@@ -163,7 +105,7 @@ function Cart(props)
                   "address": "Razorpay Corporate Office"
               },
               "theme": {
-                  "color": "#218838"
+                  "color": "#565CB9"
               }
           };
           const rzp1 = new window.Razorpay(options);
@@ -192,6 +134,16 @@ function Cart(props)
 
     }
 
+
+    function boolhandler(){
+        if(ischecked){
+            setgrandtotal(grandtotal-5);
+        }else{
+            setgrandtotal(grandtotal+5);
+        }
+        setchecked(!ischecked);
+    }
+   
 
    
     return(
@@ -230,7 +182,7 @@ function Cart(props)
                     <h1 className={styles.nameh1}>Subtotal</h1>
                 </div>
                 <div className={styles.amount}>
-                    <h1 className={styles.amounth1}>Rs 300</h1>
+        <h1 className={styles.amounth1}>Rs {subtotal}</h1>
                 </div>
             </div >
             <div className={styles.onerow}>
@@ -238,7 +190,7 @@ function Cart(props)
                     <h1 className={styles.nameh1}>Taxes</h1>
                 </div>
                 <div className={styles.amount}>
-                    <h1 className={styles.amounth1}>Rs 100</h1>
+                    <h1 className={styles.amounth1}>Rs {Math.ceil(subtotal*0.18)}</h1>
                 </div>
             </div >
             <div className={styles.onerow}>
@@ -255,11 +207,11 @@ function Cart(props)
                     <h1 className={styles.totalnameh1}>Total</h1>
                 </div>
                 <div className={styles.amount}>
-                    <h1 className={styles.totalamounth1}>Rs 450</h1>
+                    <h1 className={styles.totalamounth1}>Rs {Math.ceil(grandtotal)}</h1>
                 </div>
             </div >
             <div className={styles.insurance}>
-            <input type="checkbox" aria-label="Checkbox for following text input"></input>
+            <input type="checkbox" className={styles.inscheckbox} aria-label="Checkbox for following text input" value={ischecked} onClick={boolhandler}></input>
             <h1 className={styles.insuranceh1}>Add Insurance worth Rs. 5 to cover the delivery</h1>
             </div>
                 <button className={styles.checkoutbutton} onClick={cartcheckout}>

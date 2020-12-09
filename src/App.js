@@ -21,15 +21,15 @@ function App()
     <div className="App">
        <Switch>
        <Route exact path="/" component={FirstScreen} />
-        <   ProtectedRoute exact path='/mycrops' component={MyCropList} />
+        < ProtectedRoute exact path='/mycrops' component={MyCropList} />
        <  Route exact path='/aboutus' component={Aboutus} />      
-        <  ProtectedRoute exact path="/buyer" component={FirstScreen} />
+        < ProtectedRoute exact path="/buyer" component={FirstScreen} />
         < ProtectedRoute exact path='/try' component={Farmerfirst} />
-        <  ProtectedRoute exact path="/farmer" component={FirstScreen} />
-        <  Route exact path="/govmntscheme" component={GovernmentSchemes} />
-        <  ProtectedRoute exact path='/postacrop' component={FarmerUpload} />
-        <Route exact path="/user" component={UserScreen} />
-        <Route exact path="/cart" component={CartOuter} />
+        < ProtectedRoute exact path="/farmer" component={FirstScreen} />
+        < Route exact path="/govmntscheme" component={GovernmentSchemes} />
+        < ProtectedRoute exact path='/postacrop' component={FarmerUpload} />
+        < ProtectedRoute exact path="/user" component={UserScreen} />
+        < ProtectedRoute exact path="/cart" component={CartOuter} />
 
         <Route path='*' component={Error404Page} />
       </Switch>

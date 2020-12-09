@@ -1,0 +1,14 @@
+.outer {
+  text-align: left;
+  margin-top: 2vh;
+}
+.logo {
+  display: inline-block;
+  margin: 0 2.5vw 0 2vw;
+  color: #edf5e1;
+}
+.title {
+  display: inline-block;
+  font-size: 1.8rem;
+  color: #edf5e1;
+}

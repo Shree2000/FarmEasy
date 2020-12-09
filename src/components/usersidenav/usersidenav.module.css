@@ -1,11 +1,12 @@
 .navouter {
   height: 100vh;
   width: 20%;
-  background-color: wheat;
+  background-color: #3e5b23;
   z-index: 3;
   display: inline-block;
   position: fixed;
   left: 0;
+  text-align: left;
 }
 .navtitle {
   font-size: 2.5rem;
@@ -14,10 +15,19 @@
   font-weight: normal;
   font-family: Unica One;
   display: inline-block;
-  color: #ffffff;
+  color: #edf5e1;
+  margin-top: 2vh;
+  margin-bottom: 3vh;
 }
 .hamburger {
   display: inline-block;
-  margin-right: 3vw;
-  color: #ffffff;
+  margin-right: 2.5vw;
+  margin-left: 2vw;
+  color: #edf5e1;
+}
+
+.horizontal {
+  height: 0.02vh;
+  background-color: #edf5e1;
+  margin: 2.5vh 0 0.5vh;
 }

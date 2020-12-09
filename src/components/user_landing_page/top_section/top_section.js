@@ -1,8 +1,55 @@
-import React from "react";
+import React,{useState} from "react";
 import styles from "./top_section.module.css";
 
-function TopSection()
+function TopSection(props)
 {
+
+
+        const [pricerange,setpricerange] = useState(3);
+        const [cropsarr,setcropsarr] = useState(["wheat","rice","barley","corn","maize"]);
+        const [categories,setcategories] = useState([true,true,true,true,true,true]);
+        const [searchterm,setsearchterm] = useState("");
+
+        function categoryhandler(value,num){
+            if(categories[num]){
+                var newarr = cropsarr.filter( (singlename) => {
+                    return singlename != value;
+                })
+                setcropsarr(newarr);
+            }else{
+                setcropsarr([...cropsarr,value])
+            }
+
+            var anotherarr = categories;
+            anotherarr[num] = !categories[num];
+            setcategories(anotherarr);
+        }
+
+        function allcats(val){
+            if(categories[5]){
+                var newarr2 = [false,false,false,false,false,false];
+                setcropsarr([]);
+            }else{
+                var newarr2 = [true,true,true,true,true,true];
+                setcropsarr(["wheat","rice","barley","corn","maize"]);
+            }
+            
+            setcategories(newarr2);
+        }
+
+        function applyhandler(){
+            console.log("hey bro");
+            console.log(pricerange);
+            console.log(cropsarr);
+            props.filterfunc(pricerange,cropsarr);
+        }
+
+        function searchhandler(searchthing){
+            setsearchterm(searchthing);
+            props.searchfunction(searchthing);
+            // console.log(searchthing);
+        }
+
         return (
            <div className={styles.top_section_outer}>
                <div className={styles.filterbuttondiv}>
@@ -10,7 +57,7 @@ function TopSection()
                </div>
                <div className={styles.searchbardiv}>
                <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search crops" />
+                <input type="text" class="form-control" placeholder="Search crops" value={searchterm} onChange={(e) => searchhandler(e.target.value)} />
                 <div className={styles.input_group_append} >
                 <button class="btn btn-secondary" type="button">
                     <i class="fa fa-search"></i>
@@ -24,9 +71,9 @@ function TopSection()
                     <span className={styles.sortbytext} >Sort By</span>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                    <a class="dropdown-item" href="#">Cost</a>
-                    <a class="dropdown-item" href="#">Proximity</a>
-                    <a class="dropdown-item" href="#">Date</a>
+                    {/* <a class="dropdown-item" href="#" onClick={() => props.sorter(0)}>Proximity</a> */}
+                    <a class="dropdown-item" href="#" onClick={() => props.sorter(1)}>Price Increasing</a>
+                    <a class="dropdown-item" href="#" onClick={() => props.sorter(2)}>Price Decreasing</a>
                     </div>
                 </div>
            </div>
@@ -46,31 +93,34 @@ function TopSection()
                 {/* <h1 className={styles.filter_option}>100-200</h1>
                 <h1 className={styles.filter_option}>200-300</h1>
                 <h1 className={styles.filter_option}>300-400</h1> */}
-                <input className={styles.filter_option} type="radio" id="male" name="gender" value="male" />
-                <label className={styles.filter_optiontext} for="male">10-100</label><br />
-                <input className={styles.filter_option} type="radio" id="female" name="gender" value="female" />
-                <label className={styles.filter_optiontext} for="female">100-1000</label><br />
-                <input className={styles.filter_option} type="radio" id="other" name="gender" value="other" />
-                <label className={styles.filter_optiontext} for="other">1000-10,000</label>
+                <input className={styles.filter_option} type="radio" id="male" name="gender" onClick={() => setpricerange(0)} />
+                <label className={styles.filter_optiontext} for="male"> 0-100</label><br />
+                <input className={styles.filter_option} type="radio" id="female" name="gender" onClick={() => setpricerange(1)} />
+                <label className={styles.filter_optiontext} for="female">100-500</label><br />
+                <input className={styles.filter_option} type="radio" id="other" name="gender" onClick={() => setpricerange(2)} />
+                <label className={styles.filter_optiontext} for="other"> greater than 500</label><br />
+                <input className={styles.filter_option} type="radio" id="other" name="gender" defaultChecked={true} onClick={() => setpricerange(3)} />
+                <label className={styles.filter_optiontext} for="other">None</label>
                 <br />
                 <hr />
                 <h1 className={styles.filter_title}>Category : </h1>
-                <input className={styles.filter_option} type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
+                <input className={styles.filter_option} type="checkbox" id="vehicle1" name="vehicle1" checked={categories[0]} value={"wheat"} onClick={(e) => categoryhandler(e.target.value,0)}/>
                 <label className={styles.filter_optiontext} for="vehicle1"> Wheat</label><br />
-                <input className={styles.filter_option} type="checkbox" id="vehicle2" name="vehicle2" value="Car" />
+                <input className={styles.filter_option} type="checkbox" id="vehicle2" name="vehicle2" checked={categories[1]} value={"rice"} onClick={(e) => categoryhandler(e.target.value,1)}/>
                 <label className={styles.filter_optiontext} className={styles.filter_option} for="vehicle2">Rice</label><br />
-                <input className={styles.filter_option} type="checkbox" id="vehicle3" name="vehicle3" value="Boat" />
+                <input className={styles.filter_option} type="checkbox" id="vehicle3" name="vehicle3" checked={categories[2]} value={"barley"} onClick={(e) => categoryhandler(e.target.value,2)}/>
                 <label className={styles.filter_optiontext} for="vehicle3"> Barley</label><br />
-                <input className={styles.filter_option} type="checkbox" id="vehicle3" name="vehicle4" value="Boat" />
+                <input className={styles.filter_option} type="checkbox" id="vehicle3" name="vehicle4" checked={categories[3]} value={"corn"} onClick={(e) => categoryhandler(e.target.value,3)} />
                 <label className={styles.filter_optiontext} for="vehicle3"> Corn</label><br />
-                <input className={styles.filter_option} type="checkbox" id="vehicle3" name="vehicle5" value="Boat" />
-                <label className={styles.filter_optiontext} for="vehicle3"> Maze</label><br />
-                <input className={styles.filter_option} type="checkbox" id="vehicle3" name="vehicle6" value="Boat" />
-                <label className={styles.filter_optiontext} for="vehicle3"> Barley</label><br />
+                <input className={styles.filter_option} type="checkbox" id="vehicle3" name="vehicle5" checked={categories[4]} value={"maize"} onClick={(e) => categoryhandler(e.target.value,4)} />
+                <label className={styles.filter_optiontext} for="vehicle3"> Maize</label><br />
+                <input className={styles.filter_option} type="checkbox" id="vehicle3" name="vehicle5" checked={categories[5]}  onClick={(e) => allcats(e.target.value)} />
+                <label className={styles.filter_optiontext} for="vehicle3"> All Categories</label><br />
+                
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Apply</button>
+                    <button type="button" class="btn btn-primary" onClick={applyhandler} data-dismiss="modal">Apply</button>
                 </div>
                 </div>
             </div>

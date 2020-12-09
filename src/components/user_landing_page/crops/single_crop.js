@@ -13,6 +13,8 @@ function SingleCrop(props)
    const [ button, setButton ] = useState(true);
    const [quantity,setquant] = useState(1);
 
+//    var imgsource = 
+
     function addhandler(){
         console.log(quantity);
         toast.success("Added to cart",{
@@ -47,7 +49,25 @@ function SingleCrop(props)
     }
 
 
-    const source = require("../../../images/corn.png");
+    const source1 = require("../../../images/corn.png");
+    const source2 = require("../../../images/millets.jpg");
+    const source3 = require("../../../images/rice.jpg");
+    const source4 = require("../../../images/wheat.jpg");
+    const source5 = require("../../../images/grains.png");
+
+    let source;
+    if( props.cropname.toLowerCase().includes("corn") ){
+        source = source1;
+    }else if( props.cropname.toLowerCase().includes("millets") ){
+        source = source2;
+    }else if( props.cropname.toLowerCase().includes("rice") ){
+        source = source3;
+    }else if( props.cropname.toLowerCase().includes("wheat") ){
+        source = source4;
+    }else{
+        source = source5;
+    }
+
     return(
         <div className={styles.singlecrop}>
             <div className={styles.header}>
@@ -83,7 +103,7 @@ function SingleCrop(props)
                 <h1 className={styles.seller_subtitle}>Harvest Season : {props.harvest}</h1>
 
             </div>
-            <div>{
+            <div className={styles.bottomouterdiv}>{
                 button
                  ?  <div className={styles.add_to_cart_div} >
                 <h1 className={styles.add_to_cart_text} onClick={() => setButton(false)}>Add To Cart</h1>

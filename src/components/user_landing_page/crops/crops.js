@@ -113,25 +113,9 @@ import Identity from '../../../utils/Identify';
 
 
 
-function Crops()
+function Crops(props)
 {
-  const [crops,setcrops] = useState([]);
 
-  useEffect(() => {
-    const apiurl = Identity.api + "allproduct";
-    console.log(apiurl);
-    axios.post(apiurl, {
-        "username" : "John"
-      })
-      .then(function (response) {
-        console.log(response.data.productlist);
-        const newcrops = response.data.productlist;
-        setcrops(newcrops);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, []);
     // 0 pe kya hai 1 pe kya hai : 
     // 0 - 
 
@@ -166,7 +150,7 @@ function Crops()
     return(
         <div className={styles.very_outerdiv}>
         <div className={styles.outerdiv}>
-            {crops.map((single_crop,index) => {
+            {props.crops.map((single_crop,index) => {
                 return(
                     <SingleCrop cropname = {single_crop.productcategory} img = {single_crop.img} rating = {single_crop.rating} price={single_crop.price} quantity={single_crop.availability} seller={single_crop.sellername} farm_location={single_crop.selleraddress} harvest={single_crop.harvestseason}/>
                 )

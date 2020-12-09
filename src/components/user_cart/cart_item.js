@@ -5,10 +5,29 @@ import axios from "axios";
 import Identity from '../../utils/Identify';
 
 function CartItem(props)
-{
+{   
+
+    const source1 = require("../../images/corn.png");
+    const source2 = require("../../images/millets.jpg");
+    const source3 = require("../../images/rice.jpg");
+    const source4 = require("../../images/wheat.jpg");
+    const source5 = require("../../images/grains.png");
+
+    let source;
+    if( props.cropname.toLowerCase().includes("corn") ){
+        source = source1;
+    }else if( props.cropname.toLowerCase().includes("millets") ){
+        source = source2;
+    }else if( props.cropname.toLowerCase().includes("rice") ){
+        source = source3;
+    }else if( props.cropname.toLowerCase().includes("wheat") ){
+        source = source4;
+    }else{
+        source = source5;
+    }
 
     function deletehandler(){
-        props.deleter(props.cropname,props.seller);
+        props.deleter(props.cropname,props.seller,props.quantity,props.price);
         const apiurl = Identity.api + "removefromcart";
         axios.post(apiurl, {
             "customer_name" : "John",
@@ -23,7 +42,7 @@ function CartItem(props)
           });
     }
 
-    const source = require("../../images/corn.png");
+    // const source = require("../../images/corn.png");
     return(
         <div className={styles.singlecartitem}>
                <div className={styles.cartimgdiv}>

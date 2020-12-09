@@ -11,6 +11,7 @@
   /* padding: 2vh 2vw 0; */
   /* display: flex; */
   /* width: 20vw; */
+  position: relative;
 }
 .singlecrop:hover {
   transform: scale(
@@ -56,6 +57,7 @@
 .seller_info {
   text-align: left;
   font-family: "Noto Serif", serif;
+  margin-bottom: 6vh;
 }
 .seller_title {
   font-size: 1rem;
@@ -134,4 +136,9 @@
   /* color: #ffffff; */
   font-weight: bolder;
   margin-right: 0.5vw;
+}
+.bottomouterdiv {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }

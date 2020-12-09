@@ -15,7 +15,10 @@ const FirstScreen = (props) => {
         console.log(data); //cookie code
         sessionStorage.setItem('Auth','yes'); //cookie code
         Idenity.setData(data.username,data.usertype); //cookie code 
+        if(data.usertype==="Farmers") 
         props.history.push('/mycrops'); //cookie code
+        else
+        props.history.push('/user');
     }
     const [modaltrue,togglemodal] = useState(false);
     const [RegisterTrue, ToggleRegister]= useState(false);
