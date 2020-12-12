@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import _ from "lodash";
 import MyCropListComp from '../../cropOrders/cropOrders.component';
 import Identify from '../../../utils/Identify';
+import Spinner from '../../../utils/spinner/spinner';
 
 class MyCropList extends React.Component{
     constructor(){
@@ -17,13 +18,17 @@ class MyCropList extends React.Component{
         this.state={
             arr:[],
             total_Orders:0, 
-            order_Total:0
+            order_Total:0,
+            spinner:true,
         }
-
-        axios.post('http://06ea2bf48204.ngrok.io/farmerorder',{
-            farmer_name:"Pashva Mehta" 
+        let farmerName= localStorage.getItem('cookieData');
+        farmerName=JSON.parse(farmerName);
+        console.log(farmerName.username);
+        axios.post('http://6f31c80f39c7.ngrok.io/farmerorder',{
+            farmer_name:farmerName.username 
         })
         .then(response=>{
+            this.setState({spinner:false});
             let dataobj = _.cloneDeep(response.data);
             dataobj=dataobj.listoforders;
             console.log(dataobj);
@@ -54,6 +59,7 @@ class MyCropList extends React.Component{
         })
         .catch(e=>{
             console.log(e);
+            this.setState({spinner:false})
             toast.error("Something went wrong! Please, try again.")
         })
     }
@@ -90,6 +96,9 @@ class MyCropList extends React.Component{
                 </div>
                 <Rightimage />
                 <ToastContainer position="bottom-right" pauseOnHover={false} />
+                <div className="spinner_wrap">
+                { this.state.spinner && <Spinner/>}
+                </div>
             </div>
         )
     }

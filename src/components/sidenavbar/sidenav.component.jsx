@@ -26,6 +26,7 @@ const Sidenav = (props)=>
         <Link to='/mycrops' className='dashboard1_item'>My crops</Link>
         <Link to='/postacrop' className='dashboard1_item'>Post a Crop</Link>
         <Link to='/govmntscheme' className='dashboard1_item'>Government Schemes</Link>
+        <Link to='/croprec' className='dashboard1_item'>Crop Recommendation</Link>
         <p className='dashboard1_item' onClick={Logout}>Sign Out</p>
         
     </div>

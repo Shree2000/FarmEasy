@@ -14,6 +14,9 @@ import Error404Page from './components/pages/Error404page/error404.component';
 import UserScreen from "./components/user_landing_page/user_firstscreen";
 import CartOuter from "./components/user_cart/cart_outer";
 import GovernmentSchemes from './components/pages/govmntSchemes/govmntschemes';
+import Recommend from './components/pages/Crop_Rec/crop_rec';
+
+
 function App() 
 {
   return (
@@ -28,8 +31,9 @@ function App()
         < ProtectedRoute exact path="/farmer" component={FirstScreen} />
         < Route exact path="/govmntscheme" component={GovernmentSchemes} />
         < ProtectedRoute exact path='/postacrop' component={FarmerUpload} />
-        < ProtectedRoute exact path="/user" component={UserScreen} />
-        < ProtectedRoute exact path="/cart" component={CartOuter} />
+        < Route exact path="/user" component={UserScreen} />
+        < Route exact path="/cart" component={CartOuter} />
+        < Route exact path="/croprec" component={Recommend} />
 
         <Route path='*' component={Error404Page} />
       </Switch>

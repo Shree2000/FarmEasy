@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import styles from "./navbar.module.css";
 import UserSideNav from "../usersidenav/usersidenav";
-import {Link} from "react-router-dom";
+import {Link , Redirect, withRouter} from 'react-router-dom';
 import Identify from "../../utils/Identify";
 
 function NAV(props)
@@ -70,4 +70,4 @@ function NAV(props)
 }
 
 
-export default NAV;
+export default withRouter(NAV);

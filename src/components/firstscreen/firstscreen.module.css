@@ -3,14 +3,21 @@
   padding: 0;
 }
 .parent {
-  height: 100vh;
+  min-height: 100vh;
   background-image: url("../../images/back_png.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
 }
-
+.firstpage_tagline{
+  font-family: "Unica One", cursive;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50% ,-50%);
+  color: #ffffff;
+}
 .nav {
   text-align: left;
 }

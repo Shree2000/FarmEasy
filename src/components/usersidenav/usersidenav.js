@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import { propTypes } from "react-bootstrap/esm/Image";
 import styles from "./usersidenav.module.css";
 import SingleSidenav from "./singlesidenav";
-import {Link} from "react-router-dom";
+import {Link , Redirect, withRouter} from 'react-router-dom';
 import Identify from "../../utils/Identify";
 
 function UserSideNav(props)
@@ -26,7 +26,9 @@ function UserSideNav(props)
                 <SingleSidenav logo={"fa fa-shopping-cart fa-2x"} title={"Cart"}/>
                 </Link>
                 {/* <hr className={styles.horizontal} ></hr> */}
+                <div onClick={Logout}>
                 <SingleSidenav logo={"fa fa-sign-out fa-2x"} title={"Logout"}  onClick={Logout}/>
+                </div>
 
             </div>
 
@@ -34,4 +36,4 @@ function UserSideNav(props)
 }
 
 
-export default UserSideNav;
+export default withRouter(UserSideNav);

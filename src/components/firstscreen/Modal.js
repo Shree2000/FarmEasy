@@ -16,7 +16,7 @@ const Modal = (props) => {
   const [formData, setFormData]= useState({
       username:"",
       password:"",
-      address:"phase1 1802 Neelkamal Height Borivali(South) 400210",
+      address:"",
       phonenumber:123456,
       usertype:""
   })
@@ -45,7 +45,7 @@ const Modal = (props) => {
             localStorage.setItem('cookieData',JSON.stringify(response.data));
             sessionStorage.setItem('Auth','yes');
             Idenity.setData(response.data.username,response.data.usertype);
-            props.prop.history.push('/try');
+            props.prop.history.push('/mycrops');
           })
           .catch(function (error) {
             console.log(error);
@@ -53,7 +53,7 @@ const Modal = (props) => {
         setFormData({
             username:"",
             password:"",
-            address:"phase1 1802 Neelkamal Height Borivali(South) 400210",
+            address:"",
             phonenumber:123456,
             usertype:""
         })
@@ -68,16 +68,16 @@ const Modal = (props) => {
         <p className={styles.cross} onClick={()=>{props.Toggsetter(false)}}>+</p>
         <form action="">
             <p>Username</p>
-            <input type="text" name="username" id={uuidv4()} placeholder="Enter Username" onChange={changeVal}  value={formData.username}/>
+            <input type="text" autocomplete="off" name="username" id={uuidv4()} placeholder="Enter Username" onChange={changeVal}  value={formData.username}/>
             <p>Password</p>
-            <input type="password" name="password" id={uuidv4()} placeholder="Password" onChange={changeVal}  value={formData.password} />
+            <input type="password" autocomplete="off" name="password" id={uuidv4()} placeholder="Password" onChange={changeVal}  value={formData.password} />
+            <p>Address</p>
+            <input type="text" name="address" autocomplete="off" id={uuidv4()} placeholder="Address" onChange={changeVal}  value={formData.address} />
             <select name="usertype" id={uuidv4()}  onChange={changeVal} value={formData.usertype}>
                 <option value="Farmer">Farmer</option>
                 <option value="New User">New User</option>
             </select>    
             <input type="submit" value="Register" onClick={RegisterHandler} />
-            <a href="#">Reset Passsword</a>
-            <a href="#">Already have an account?</a>
         </form>
         <ToastContainer />
     </div>

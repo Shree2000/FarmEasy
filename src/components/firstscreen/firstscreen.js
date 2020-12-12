@@ -22,6 +22,7 @@ const FirstScreen = (props) => {
     }
     const [modaltrue,togglemodal] = useState(false);
     const [RegisterTrue, ToggleRegister]= useState(false);
+    
     function closemodal(){
         if(modaltrue){
             togglemodal(false);
@@ -44,7 +45,9 @@ const FirstScreen = (props) => {
             {modaltrue && <Modal showModal={modaltrue} Toggsetter={togglemodal} notify={notify} prop={props} /> }
             {RegisterTrue && <Register showRegister={RegisterTrue} Regsetter={ToggleRegister} prop={props} /> }
             {/* <button className={styles.shopnowbutton}><h1 className={styles.shopnowtext} >SHOP NOW</h1></button> */}
+           { !modaltrue && !RegisterTrue && <h1 className={styles.firstpage_tagline}>Transforming, a field at a time</h1>}
         </div>
+        
     );
   };
   

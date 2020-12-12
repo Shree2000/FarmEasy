@@ -3,3 +3,10 @@
     top: 40px;
     left:78px;
 }
+.spinner_wrap{
+    display: inline-block;
+    position: absolute;
+    margin: auto;
+    top: calc(50% - 20vh) ;
+    left: 50%;
+}

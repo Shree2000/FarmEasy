@@ -50,8 +50,7 @@ class FarmerUpload extends React.Component{
             imageurl:'abcd',
             productcategory:this.state.cropName,
             sellername:farmerName.username,
-        }
-        console.log(cropData);  
+        }  
         axios.post('http://149107dd4efc.ngrok.io/addproduct',cropData)
           .then( response => {
             console.log(response.data);
@@ -72,7 +71,7 @@ class FarmerUpload extends React.Component{
             cropDescription:'',
             cropHarvest:'',
         },()=>{
-            console.log(this.state);     
+               
         });   
        // (this.success && this.showhandle());
     }

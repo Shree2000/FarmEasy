@@ -45,6 +45,7 @@
     justify-content: space-between;
     align-items: center;
     height: 30px;
+    font-weight: 600;
     width: 70%;
     margin: 0 0 0 10px;
 
@@ -54,6 +55,7 @@
 }
 .farmerOrderAddress{
     margin: 0 0 0 10px;
+    font-weight: 600;
 }
 .farmerOrderWrapper h6{
     margin: 5px 0 0 10px;

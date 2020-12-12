@@ -6,7 +6,7 @@ export const ProtectedRoute = ({
   component: Component,
   ...rest
 }) => {
-    console.log(sessionStorage.getItem('Auth'));
+    
   return (
     <Route
       {...rest}

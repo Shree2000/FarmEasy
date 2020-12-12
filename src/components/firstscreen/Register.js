@@ -10,7 +10,9 @@ const Register = (props) => {
   
   const [formData, setFormData] = useState({
     username:"",
-    password:""
+    password:"",
+    latitude:0,
+    longitude:0,
   })
 
  
@@ -29,11 +31,13 @@ const Register = (props) => {
 
   function login()
   {
-    // localStorage.setItem('cookieData',JSON.stringify({username:'abc', usertype:'sdhv'})); // cookie change
-    // sessionStorage.setItem('Auth','yes');
-    // Idenity.setData(response.data.username,response.data.usertype); 
-    // props.prop.history.push('/try');
-
+ 
+    navigator.geolocation.getCurrentPosition((pos)=>{setFormData((props)=>{
+      return {
+         ...props,
+         latitude:pos.coords.latitude,
+         longitude:pos.coords.longitude,} 
+      })}, (err)=>{console.log("err");}, {enableHighAccuracy: true,timeout: 5000,maximumAge: 0});
     axios.post(Idenity.api + 'login',formData)
       .then(function (response) {
         console.log(response.data);
@@ -42,7 +46,7 @@ const Register = (props) => {
           sessionStorage.setItem('Auth','yes');
           Idenity.setData(response.data.username,response.data.usertype); 
           if(response.data.usertype === "Farmers"){
-            props.prop.history.push('/try');
+            props.prop.history.push('/mycrops');
           }else{
             props.prop.history.push('/user');
           }
@@ -67,9 +71,9 @@ const Register = (props) => {
     <h1 className={styles.loginheader}>Login</h1>
     <form action="">
         <p>Username</p>
-        <input type="text" name="username" id="" autoComplete="off" onChange={changeHandler} placeholder="Enter Username" value={formData.username} />
+        <input type="text" name="username" id="" autocomplete="off" onChange={changeHandler} placeholder="Enter Username" value={formData.username} />
         <p>Password</p>
-        <input type="password" name="password" id=""  autoComplete="off" onChange={changeHandler} placeholder="Password"  value={formData.password}/>    
+        <input type="password" name="password" id=""  autocomplete="off" onChange={changeHandler} placeholder="Password"  value={formData.password}/>    
         <input type="submit" value="Login" onClick={login} />
         <a href="#">Reset Passsword</a>
         <a href="#">Don't have an account?</a>

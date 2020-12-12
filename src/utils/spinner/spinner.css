@@ -1,0 +1,16 @@
+ .styleobj{
+        margin: auto;
+        background: none;
+        display: inline-block;
+        shape-rendering: auto;
+        
+    }
+.spinner_path{
+    transform:scale(0.15000000000000002);
+    transform-origin:50px 50px
+}
+.spinner_wrapper{
+    width:10px;
+    height:10px;
+    border: 1px solid;
+}

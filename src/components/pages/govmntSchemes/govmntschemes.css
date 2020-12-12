@@ -1,9 +1,36 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
 .schemes_maincontent{
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left: 400px;
+    width: calc(100vw - 360px);
+    height: 100vh;
     
 }
-
-
-
+.scheme_table_wrapper{
+    width: 80%;
+    margin: 10vh 10vh;
+    padding-bottom: 5vh;
+}
+.scheme_table_span{
+    text-decoration: underline;
+    color: #29a19c;
+    cursor: pointer;
+}
+.schemes_header{
+    color: #77a058 ;
+    font-family: 'Slabo 27px', serif;
+    position: relative;
+    top: 5vh;
+    right: 17vh;
+}
+.spinner_wrap{
+    display: inline-block;
+    position: absolute;
+    margin: auto;
+    top: calc(50% - 20vh) ;
+    left: 50%;
+}
 
 
