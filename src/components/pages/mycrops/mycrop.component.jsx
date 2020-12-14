@@ -23,8 +23,7 @@ class MyCropList extends React.Component{
         }
         let farmerName= localStorage.getItem('cookieData');
         farmerName=JSON.parse(farmerName);
-        console.log(farmerName.username);
-        axios.post('http://6f31c80f39c7.ngrok.io/farmerorder',{
+        axios.post('http://f2e652d9e690.ngrok.io/farmerorder',{
             farmer_name:farmerName.username 
         })
         .then(response=>{
@@ -48,7 +47,7 @@ class MyCropList extends React.Component{
                         order_Total : this.state.order_Total+ order.cost,
                         total_Orders : this.state.total_Orders+1,
 
-                    },()=>{console.log(this.state);})
+                    })
                 });
                }   
             }

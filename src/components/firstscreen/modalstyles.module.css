@@ -12,7 +12,8 @@
     border-radius: 18px;
     background-color: #fadcac;
     position: relative;
-    left: calc(50% - 200px);
+    left: calc(50%);
+    transform: translateX(-50%);
     box-sizing: border-box;
     padding: 70px 30px 30px 30px;
 }
@@ -116,4 +117,41 @@
   font-family: 'Open Sans', sans-serif;
   transform: rotate(45deg);
   font-weight: bold;
+}
+
+@media(max-width:1400px){
+    .circle_img{
+        height: 40px;
+        width: 40px;
+        top: -25px;
+        left: calc(50% - 12px);
+    }
+    .loginbox{
+        width: 300px;
+        padding: 20px 30px;
+        left: calc(50%);
+        transform: translateX(-50%);
+        height: 510px;
+        margin: 5vh 0;
+    }
+    .loginheader
+    {
+        font-size: 20px;
+    }
+    .loginbox p{
+        font-size: 16px;
+    }
+    .loginbox input[type="text"], .loginbox input[type="password"]{
+        font-size: 14px;
+    }
+    .loginbox a{
+        font-size: 16px;
+    }
+    .loginbox input[type="submit"]{
+        font-size: 16px;
+    }
+    .loginbox select{
+        font-size: 14px;
+        height: 40px;
+    }
 }

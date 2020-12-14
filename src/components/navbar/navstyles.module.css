@@ -35,8 +35,8 @@ ul {
   cursor: pointer;
 }
 ul li {
-  margin-left: 10px;
-  margin-right: 20px;
+  margin-left: 40px;
+  margin-right: 0px;
   text-decoration: none !important;
   font-size: 22px;
 }
@@ -75,4 +75,48 @@ ul .navbuts:hover:after {
   transition: transform 0.5s;
   transform-origin: bottom right;
   transform: scale(1);
+}
+
+@media (max-width:800px){
+  nav{
+    display: flex;
+    flex-direction: column;
+  }
+  ul{
+    display: flex;
+    margin-right: 0;
+    justify-content: center;
+    text-align: center;
+    
+  }
+  ul li{
+    margin-right: 0px;
+    margin-left: 0;
+    font-size: 18px;
+  }
+  .parent h1{
+    margin-left: 0;
+    font-size: 28px;
+  }
+  .vl{
+    margin-right: 5px;
+  }
+  ul .navbuts{
+    font-size: 16px;
+  }
+  
+}
+@media (min-width:801px) and (max-width:1200px){
+  ul{
+    margin-right: 10px;
+  }
+  ul li{
+    font-size: 20px;
+    margin-top: 0px;
+  }
+  
+  .parent h1{
+    margin-left: 25px;
+    font-size: 35px;
+  }
 }

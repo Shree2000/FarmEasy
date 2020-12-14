@@ -4,6 +4,7 @@ import Subscribe from '../subscribe/subscribe';
 import LineChart from '../LineChart/lineChart.component';
 import DoughnutChart from '../Pie-Chart/pieChart.component';
 import Identify from '../../utils/Identify';
+import axios from 'axios';
 
 class Farmercenter extends React.Component{
     constructor()
@@ -13,8 +14,32 @@ class Farmercenter extends React.Component{
         this.usertype='';
     
         this.state={
-            stats:{}
+            stats:{},
+            namearr:[],
+            dataarr:[],
         }
+        let farmerName= localStorage.getItem('cookieData');
+        farmerName=JSON.parse(farmerName);
+        axios.post('http://f2e652d9e6901.ngrok.io/fcd',{farmername:farmerName.username})
+        .then(response=>{
+            let tempnamearr=[];
+            let tempdataarr=[];
+            let res= response.data.ans;
+            res.forEach(element => {
+                tempnamearr.push(element[0]);
+                tempdataarr.push(element[1]);
+            });
+            this.setState({
+                namearr:[...tempnamearr],
+                dataarr:[...tempdataarr]
+            });
+        })
+        .catch(err=>{
+            this.setState({
+                namearr:[...this.state.namearr, 'Rice', "Wheat", "Buckwheat", "Jowar", "Ragi"],
+                dataarr:[...this.state.dataarr,8000,5000,1000,3000,2000],
+            })
+        })
     }
     collectdata= ()=>{
        let usedData= Identify.getData();
@@ -59,7 +84,7 @@ class Farmercenter extends React.Component{
                 <h1>Total sales</h1>   
             </div>
             <div className="doughnutWrapper">
-                <DoughnutChart />
+                <DoughnutChart dataarr={this.state.dataarr} namearr={this.state.namearr} />
                 <h1>Distribution of top selling crops</h1>
             </div>
             </div>

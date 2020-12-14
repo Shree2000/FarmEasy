@@ -17,10 +17,10 @@ const Modal = (props) => {
       username:"",
       password:"",
       address:"",
-      phonenumber:123456,
-      usertype:""
+      phonenumber:"123456",
+      usertype:"",
   })
-
+  
 
     
         function changeVal(event){
@@ -36,19 +36,40 @@ const Modal = (props) => {
       
      function RegisterHandler(event)
      {
-        
+      
         event.preventDefault();
         console.log(formData);
-        axios.post('http://7137aa5b1a55.ngrok.io/register',formData)
+        axios.post('http://261fdb878eb1.ngrok.io/farmers',{
+            name:formData.username,
+            latitude:props.latitude,
+            longitude:props.longitude,
+            emailaddress:"bakhaidhairya@gmail.com",
+            phonenumber:"123456",
+            usertype:formData.usertype,
+        })
           .then(function (response) {
-            //if()
-            localStorage.setItem('cookieData',JSON.stringify(response.data));
-            sessionStorage.setItem('Auth','yes');
-            Idenity.setData(response.data.username,response.data.usertype);
-            props.prop.history.push('/mycrops');
+            console.log("success");
           })
           .catch(function (error) {
-            console.log(error);
+            console.log(error+ "At spatial side");
+          });
+          axios.post('http://7495d543ea78.ngrok.io/register',{
+            username:formData.username,
+            usertpe:formData.usertype,
+            password:formData.password,
+            latitude:props.latitude,
+            longitude:props.longitude,
+            emailaddress:"bakhaidhairya@gmail.com",
+            phonenumber:"123456",
+            usertype:formData.usertype,
+            address:formData.address,
+        })
+          .then(function (response) {
+            props.notify("success","You have been registered Succesfully");
+          })
+          .catch(function (error) {
+            console.log(error + "at graph side");
+            props.notify("failure","Please try again!");
           });
         setFormData({
             username:"",
@@ -58,7 +79,7 @@ const Modal = (props) => {
             usertype:""
         })
         props.Toggsetter(false);
-        props.notify();
+        
      }   
 
 
@@ -74,8 +95,8 @@ const Modal = (props) => {
             <p>Address</p>
             <input type="text" name="address" autocomplete="off" id={uuidv4()} placeholder="Address" onChange={changeVal}  value={formData.address} />
             <select name="usertype" id={uuidv4()}  onChange={changeVal} value={formData.usertype}>
-                <option value="Farmer">Farmer</option>
-                <option value="New User">New User</option>
+                <option value="Farmer">Farmers</option>
+                <option value="Customers">Customers</option>
             </select>    
             <input type="submit" value="Register" onClick={RegisterHandler} />
         </form>
@@ -84,3 +105,13 @@ const Modal = (props) => {
   };
   
   export default withRouter(Modal);
+
+
+    // localStorage.setItem('cookieData',JSON.stringify(response.data));
+            // sessionStorage.setItem('Auth','yes');
+            // Idenity.setData(response.data.username,response.data.usertype);
+            // if(response.data.usertype === "Farmers"){
+            //     props.prop.history.push('/mycrops');
+            //   }else{
+            //     props.prop.history.push('/user');
+            //   }

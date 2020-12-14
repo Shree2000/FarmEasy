@@ -46,11 +46,12 @@ const Register = (props) => {
           sessionStorage.setItem('Auth','yes');
           Idenity.setData(response.data.username,response.data.usertype); 
           if(response.data.usertype === "Farmers"){
-            props.prop.history.push('/mycrops');
+            props.prop.history.push('/postacrop');
           }else{
             props.prop.history.push('/user');
           }
         }else{
+          props.notify("no-suc", "Try again, looks like our servers are sleeping");
           console.log(Auth.isAuthenticated());
         }
       })

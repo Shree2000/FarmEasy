@@ -9,10 +9,13 @@ const Error404Page = (props)=>{
 
     const handleSubmita = ()=>
     {
-        
-        //console.log(abc);
-        if(sessionStorage.getItem('Auth')=='yes'){
+        let farmerName= localStorage.getItem('cookieData');
+        farmerName=JSON.parse(farmerName);
+        if(sessionStorage.getItem('Auth')==='yes'){
+            if(farmerName.usertype==="Farmers")
             props.history.push('/try');
+            else
+            props.history.push('/user');
         }else{
             props.history.push('/');
         }

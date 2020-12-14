@@ -105,8 +105,58 @@
     width: 100%;
 }
 
-@media(max-width:600px){
-    .lineChartWrapper, .doughnutWrapper{
-        display: none;
+@media(max-width:1000px){
+    
+    .lineChartWrapper h1{
+        font-size: 16px;
+    }
+    .doughnutWrapper{
+        right: 0vh;
+    }
+    .doughnutWrapper h1{
+        font-size: 16px;
+    }
+    .ContentArea{
+        left: 0;
+        top: 51vh;
+        width: 100vw;
+    }
+    .farmerWelcome{
+        font-size:35px !important;
+        width: 50vw !important;
+    }
+    .farmermsg{
+        font-size: 25px;
+    }
+    .box1{
+        width: 130px;
+        font-size: 14px;
+        height:76px ;
+        margin: 2vh 0;
+    }
+    .box2{
+        width: 200px;
+        right: 0;
+        font-size: 14px;
+        height:76px ;
+    }
+    .designcover{
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-direction: column;
+        left: 0;
+    }
+    
+}
+@media(min-width:1001px) and (max-width:1200px)
+{
+    .ContentArea{
+        width: calc(100vw - 400px);
+    }
+    .box2{
+        margin-left: 5vh;
+    }
+    .box1{
+        margin-left: 2vh;
     }
 }

@@ -16,12 +16,23 @@ const FirstScreen = (props) => {
         sessionStorage.setItem('Auth','yes'); //cookie code
         Idenity.setData(data.username,data.usertype); //cookie code 
         if(data.usertype==="Farmers") 
-        props.history.push('/mycrops'); //cookie code
+        props.history.push('/postacrop'); //cookie code
         else
         props.history.push('/user');
     }
     const [modaltrue,togglemodal] = useState(false);
     const [RegisterTrue, ToggleRegister]= useState(false);
+    const [locdata, setlocdata]= useState({
+        latitude:0,
+        longitude:0
+    });
+    navigator.geolocation.getCurrentPosition((pos)=>{setlocdata((props)=>{
+        return {
+           ...props,
+           latitude:pos.coords.latitude,
+           longitude:pos.coords.longitude,} 
+        })}, (err)=>{console.log(err);}, {enableHighAccuracy: true,timeout: 5000,maximumAge: 0});
+    
     
     function closemodal(){
         if(modaltrue){
@@ -34,16 +45,19 @@ const FirstScreen = (props) => {
             ToggleRegister(false);
         }
     }
-    function notify()
+    function notify(st,message)
     {
-      toast("Registered Succesfully!");
+      if(st==="success")  
+      toast.success(message);
+      else
+      toast.error(message);
     } 
     return (
        <div className={styles.parent} >
             <ToastContainer position="bottom-right" />
             <NavBar modalsetter={togglemodal} Regsetter={ToggleRegister}/>
-            {modaltrue && <Modal showModal={modaltrue} Toggsetter={togglemodal} notify={notify} prop={props} /> }
-            {RegisterTrue && <Register showRegister={RegisterTrue} Regsetter={ToggleRegister} prop={props} /> }
+            {modaltrue && <Modal longitude={locdata.longitude} latitude={locdata.latitude} showModal={modaltrue} Toggsetter={togglemodal} notify={notify} prop={props} /> }
+            {RegisterTrue && <Register showRegister={RegisterTrue} Regsetter={ToggleRegister} prop={props} notify={notify} /> }
             {/* <button className={styles.shopnowbutton}><h1 className={styles.shopnowtext} >SHOP NOW</h1></button> */}
            { !modaltrue && !RegisterTrue && <h1 className={styles.firstpage_tagline}>Transforming, a field at a time</h1>}
         </div>

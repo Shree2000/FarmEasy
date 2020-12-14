@@ -41,3 +41,24 @@
 
 .form-control:focus{ border-width: 3px;border-color: #379683;  box-shadow: none; -webkit-box-shadow: none;} 
 .has-error .form-control:focus{box-shadow: none; -webkit-box-shadow: none;}
+
+@media(max-width:1100px){
+    .contentArea{
+        top: 51vh;
+        left: 0;
+    }
+    .farmermsg2{
+        font-size: 22px;
+        left: 20vw;
+        width: 40vw;
+        top: 35px;
+    }
+    .farmerWelcome{
+        font-size: 30px !important;
+    }
+    .formWrapper{
+        width: 90vw;
+        top: 45px;
+        right: 10vw;
+    }
+}

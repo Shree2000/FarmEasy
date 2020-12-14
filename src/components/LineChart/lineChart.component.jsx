@@ -44,6 +44,7 @@ const LineChart = (props) => {
 
 
   const options = {
+    responsive:true,
     scales: {
       yAxes: [
         {

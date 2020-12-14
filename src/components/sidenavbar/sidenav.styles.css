@@ -90,3 +90,32 @@
     color:  var(--fontcol);
     cursor: pointer;
 }
+@media(max-width:1000px){
+    .dashboard1_container{
+        top: 0;
+        width: 105vw;
+        height: 50vh;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+    }
+    .dashboard1_footer{
+        display: none;
+    }
+    .dashboard1_items{
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        left: 0;
+        width: 50%;
+    }
+    .dashboard1_item{
+        font-size: 14px;
+        margin: 1vh;
+    }
+    .dashboard1_logo{
+        font-size: 1.4rem;
+        margin-top: 7vh;
+        margin-bottom: 0vh;
+    }
+}

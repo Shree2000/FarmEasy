@@ -37,3 +37,28 @@
     text-decoration: none;
     margin-bottom: 20px;
 }
+@media(max-width:600px){
+    .errorContent{
+        left: 60px;
+        top: 150px;
+    }
+    .errorContent p{
+        font-size: 18px;
+    }
+    .errorHeader{
+        font-size: 45px;
+    }
+}
+@media(max-width:1200px) and (min-width:600px){
+    .errorContent{
+        left: 200px;
+        top: 300px;
+        height: 650px;
+    }
+    .errorContent p{
+        font-size: 25px;
+    }
+    .errorHeader{
+        font-size: 60px;
+    }
+}

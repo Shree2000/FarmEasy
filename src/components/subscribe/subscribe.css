@@ -31,3 +31,9 @@
     border-top-color:transparent;
     border-left-color: transparent; 
   }
+
+  @media(max-width:800px){
+  .subscribe_text{
+    font-size: 16px;
+  }
+}

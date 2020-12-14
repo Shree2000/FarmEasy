@@ -44,3 +44,14 @@
   font-family: "Ropa Sans", sans-serif;
   font-weight: normal;
 }
+@media(max-width:800px){
+  .firstpage_tagline{
+    top:50%;
+    font-size: 22px;
+  }
+}
+@media (min-width:801px) and (max-width:1200px){
+  .firstpage_tagline{
+    font-size: 25px;
+  }
+}

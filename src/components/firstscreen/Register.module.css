@@ -98,3 +98,34 @@
     font-weight: bold;
   }
 
+@media(max-width:1400px){
+    .circle_img{
+        height: 40px;
+        width: 40px;
+        top: -25px;
+        left: calc(50% - 12px);
+    }
+    .loginbox{
+        width: 300px;
+        padding: 20px 30px;
+        left: calc(50% - 150px);
+        height: 420px;
+        margin: 5vh 0;
+    }
+    .loginheader
+    {
+        font-size: 20px;
+    }
+    .loginbox p{
+        font-size: 16px;
+    }
+    .loginbox input[type="text"], .loginbox input[type="password"]{
+        font-size: 14px;
+    }
+    .loginbox a{
+        font-size: 16px;
+    }
+    .loginbox input[type="submit"]{
+        font-size: 16px;
+    }
+}

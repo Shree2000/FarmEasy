@@ -22,7 +22,7 @@ const NavBar = (props) => {
         <div className={styles.parent}>
         <nav>
             <h1>FArmeasy.</h1>
-            <div className="child">
+            <div className={styles.child}>
                 <ul>
                     <li  onClick={onloginclickhandler2}><Link  className={styles.navbuts}>Log In</Link></li>
                     <div className={styles.vl}></div>
