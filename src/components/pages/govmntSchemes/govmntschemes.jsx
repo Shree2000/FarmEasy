@@ -21,7 +21,7 @@ class GovernmentSchemes extends Component{
             arr:[],
             spinner:true,
         }
-        Axios.post("http://f2e652d9e690.ngrok.io/gs", {state:"Maharashtra"})
+        Axios.post("http://c421d8af2723.ngrok.io/gs", {state:"Maharashtra"})
         .then(response=>{
             console.log(response.data.ans);
             this.setState({

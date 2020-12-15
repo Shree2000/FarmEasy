@@ -15,7 +15,7 @@ import UserScreen from "./components/user_landing_page/user_firstscreen";
 import CartOuter from "./components/user_cart/cart_outer";
 import GovernmentSchemes from './components/pages/govmntSchemes/govmntschemes';
 import Recommend from './components/pages/Crop_Rec/crop_rec';
-
+import Deliveryboi from './components/pages/deliveryboy/deliveryboy';
 
 function App() 
 {
@@ -24,16 +24,17 @@ function App()
     <div className="App">
        <Switch>
        <Route exact path="/" component={FirstScreen} />
-        < Route exact path='/mycrops' component={MyCropList} />
+        < ProtectedRoute exact path='/mycrops' component={MyCropList} />
        <  Route exact path='/aboutus' component={Aboutus} />      
-        < Route exact path="/buyer" component={FirstScreen} />
-        < Route exact path='/try' component={Farmerfirst} />
-        < Route exact path="/farmer" component={FirstScreen} />
-        < Route exact path="/govmntscheme" component={GovernmentSchemes} />
-        < Route exact path='/postacrop' component={FarmerUpload} />
-        < Route exact path="/user" component={UserScreen} />
-        < Route exact path="/cart" component={CartOuter} />
-        < Route exact path="/croprec" component={Recommend} />
+        < ProtectedRoute exact path="/buyer" component={FirstScreen} />
+        < ProtectedRoute exact path='/try' component={Farmerfirst} />
+        < ProtectedRoute exact path="/farmer" component={FirstScreen} />
+        < ProtectedRoute exact path="/govmntscheme" component={GovernmentSchemes} />
+        < ProtectedRoute exact path='/postacrop' component={FarmerUpload} />
+        < ProtectedRoute exact path="/user" component={UserScreen} />
+        < ProtectedRoute exact path="/cart" component={CartOuter} />
+        < ProtectedRoute exact path="/croprec" component={Recommend} />
+        < Route exact path="/delivery" component={Deliveryboi} />
 
         <Route path='*' component={Error404Page} />
       </Switch>

@@ -18,7 +18,7 @@ const Modal = (props) => {
       password:"",
       address:"",
       phonenumber:"123456",
-      usertype:"",
+      usertype:"Farmers",
   })
   
 
@@ -53,7 +53,7 @@ const Modal = (props) => {
           .catch(function (error) {
             console.log(error+ "At spatial side");
           });
-          axios.post('http://7495d543ea78.ngrok.io/register',{
+          axios.post('http://c421d8af2723.ngrok.io/register',{
             username:formData.username,
             usertpe:formData.usertype,
             password:formData.password,
@@ -76,7 +76,7 @@ const Modal = (props) => {
             password:"",
             address:"",
             phonenumber:123456,
-            usertype:""
+            usertype:"Farmers"
         })
         props.Toggsetter(false);
         

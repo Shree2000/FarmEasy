@@ -52,7 +52,7 @@ class Recommend extends React.Component{
                     humidity:this.state.chumidity,
                     moisture:this.state.cmoisture,   
             }
-            axios.post("http://6f31c80f39c7.ngrok.io/cp",data)
+            axios.post("http://c421d8af2723.ngrok.io/cp",data)
             .then(response=>{
                 this.setState({cans:response.data.ans})
             })
@@ -73,7 +73,7 @@ class Recommend extends React.Component{
                 nitrogen:this.state.fnitrogen,
                 phosphorous:this.state.fphosphurus, 
             }
-            axios.post("http://6f31c80f39c7.ngrok.io/fp",data)
+            axios.post("http://c421d8af2723.ngrok.io/fp",data)
             .then(response=>{
                 this.setState({fans:response.data.ans});
             })

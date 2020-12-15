@@ -51,7 +51,7 @@ class FarmerUpload extends React.Component{
             productcategory:this.state.cropName,
             sellername:farmerName.username,
         }  
-        axios.post('http://f2e652d9e690.ngrok.io/addproduct',cropData)
+        axios.post('http://c421d8af2723.ngrok.io/addproduct',cropData)
           .then( response => {
             console.log(response.data);
             if(response.data.message!="Product Category already exists") toast.success("Product has been added!");
