@@ -22,3 +22,17 @@
     color: #77a058 ;
     font-family: 'Slabo 27px', serif;
 }
+.crop_rec_button_wrapper{
+    margin-top: 5vh;
+    padding: 2vh 0;
+}
+.crop_rec_header{
+    color: #77a058;
+    padding-top: 3vh;
+    margin-top: 3vh !important;
+    font-family: 'Slabo 27px', serif;
+    font-size: 30px;
+}
+.form_crop_rec{
+    width: 120%;
+}

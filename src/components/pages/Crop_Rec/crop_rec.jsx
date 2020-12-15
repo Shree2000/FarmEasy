@@ -1,211 +1,128 @@
 import React from 'react';
-import './crop_rec.css';
-import { ToastContainer, toast } from 'react-toastify';
-import Form from 'react-bootstrap/Form';
-import {Rows,Col,Container, Row} from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
-import axios from 'axios';
-import { Component } from 'react';
 import Sidenav from '../../sidenavbar/sidenav.component';
-import Identity from '../../../utils/Identify';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import {Button, Row,Col,Form, Container} from 'react-bootstrap';
+import './crop_rec.css';
+import identity from '../../../utils/Identify';
 
 
-class Recommend extends React.Component{
-    constructor(){
+class Recommend_New extends React.Component{
+
+    constructor()
+    {
         super();
-        this.state=
-        {
-            fsoiltype:"sandy",
-            fcroptype:"sugarcane",
-            ftemperature:"",
-            fmoisture:"",
-            fhumidity:"",
-            fnitrogen:"",
-            fsulphur:"",
-            fphosphurus:"",
-            csoiltype:"sandy",
-            ctemperature:"",
-            cmoisture:"",
-            chumidity:"",
+        this.state={
+            moisture:0,
+            temperature:0,
+            humidity:0,
+            latitude:0,
+            longitude:0,
+            state1:"",
             fans:"",
-            cans:"",
-
-
+            cans:[],
         }
     }
-
-    handleChange= event =>{
-
-        const {name,value} =event.target;
-        this.setState({[name]:value},()=>{console.log(this.state);});
-    }
-
-
-    handleSubmit= event =>{
-        event.preventDefault();
-        let farmerName= localStorage.getItem('cookieData');
-        farmerName=JSON.parse(farmerName);
-        console.log(event.target.name);
-        if(event.target.name==="crop"){
-            let data={
-                    farmerName,   
-                    soiltype:this.state.csoiltype,
-                    temperature: this.state.ctemperature,
-                    humidity:this.state.chumidity,
-                    moisture:this.state.cmoisture,   
-            }
-            axios.post(Identity.api + 'cp' ,data)
-            .then(response=>{
-                this.setState({cans:response.data.ans})
-            })
-            .catch(err=>{
-                toast.error("Looks like our server are taking a break, try again later!");
-            })
-               
-        }
-        else{
-            let data={
-                farmerName,   
-                soiltype:this.state.fsoiltype,
-                croptype:this.state.fcroptype,
-                temperature: this.state.ftemperature,
-                humidity:this.state.fhumidity,
-                moisture:this.state.fmoisture,
-                potassium:this.state.fsulphur,
-                nitrogen:this.state.fnitrogen,
-                phosphorous:this.state.fphosphurus, 
-            }
-            axios.post(Identity.api + 'fp',data)
-            .then(response=>{
-                this.setState({fans:response.data.ans});
-            })
-            .catch(err=>{
-                this.setState({fans: "DAP"});
-                // toast.error("Looks like our server are taking a break, try again later!");
-            })
-        }
+    componentWillMount(){
+        let data=sessionStorage.getItem('position');
+        data= JSON.parse(data);
+        console.log(data);
         this.setState({
-            fsoiltype:"sandy",
-            fcroptype:"sugarcane",
-            ftemperature:"",
-            fmoisture:"",
-            fhumidity:"",
-            fnitrogen:"",
-            fsulphur:"",
-            fphosphurus:"",
-            csoiltype:"sandy",
-            ctemperature:"",
-            cmoisture:"",
-            chumidity:"",
+            latitude:data.latitude,
+            longitude:data.longitude,
+        },()=>{
+            axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${this.state.latitude}&lon=${this.state.longitude}&appid=aa8c98ffd61b2f9e7e48ec3706943f7f&units=imperial`,{})
+            .then(response=>{
+            this.setState({
+                temperature:response.data.main.temp,
+                humidity:response.data.main.humidity,
+                moisture:24,
+            },()=>{console.log(this.state);})
+            })
+            .catch(err=>{
+            console.log(err);
+            this.setState({
+                temperature:66,
+                humidity:52,
+                moisture:24,
+            }) 
+        })
+        })
+        
+    }
+
+    handleSubmit=(event)=>{
+        event.preventDefault();
+        axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${this.state.latitude}%2C${this.state.longitude}&key=002a746bbd4f4ef8b5c0101f7b814cfd`,{})
+        .then(response=>{
+            this.setState({
+                state1:response.data.results[0].components.state
+            },()=>{axios.post(identity.api + 'reco',{
+                temperature:this.state.temperature,
+                humidity:this.state.humidity,
+                moisture:this.state.moisture,
+                state:this.state.state1,
+            })
+            .then(res=>{
+                console.log(res.data);
+                this.setState({
+                fans:res.data.fertilizer,
+                cans:res.data.croprec,
+            })})
+            .catch(err=>{console.log(err);})})
+        })
+        .catch(err=>{
+            console.log(err);
         })
     }
 
 
+    handlechange = (event)=>{
+        const {name,value} =event.target;
+        this.setState({[name]:value});
+    }
+
     render(){
-        return(
-            <div>
-                <Sidenav />
-                <div className="crop_rec_wrapper">
+       return  <div>
+            <Sidenav/>
+            <div className="crop_rec_wrapper">
+            <h1 className="crop_rec_header">We have the following suggestion based on your location and weather conditions</h1>    
+            <div className="crop_rec_button_wrapper">
+            <Button  name="croprecom" onClick={this.handleSubmit} variant="success" type="submit">
+                Get the results
+            </Button>
+            </div>    
                 <Container fluid>
                 <Row>
                    <Col  className="crop_rec_area 1" xs={12} s={12} md={6} lg={6} >
                    <h1 className="croprecheader 2">Fertilizers</h1>
-                   <div className="crop_rec_form_wrapper 1">   
-                   <Form name="fert" onSubmit={this.handleSubmit}>
-                    <Form.Label>Select the soil type</Form.Label>
-                    <Form.Control  value={this.state.fsoiltype} onChange={this.handleChange} name='fsoiltype' as="select" label="select your soil type">
-                    <option>sandy</option>
-                    <option>loamy</option>
-                    <option>black</option>
-                    <option>red</option>
-                    <option>claley</option>
-                    </Form.Control>
-                    <Form.Label>Select the crop type</Form.Label>
-                    <Form.Control  value={this.state.fcroptype} onChange={this.handleChange} name='fcroptype' as="select" label="select your crop">
-                    <option>sugarcane</option>
-                    <option>maize</option>
-                    <option>cotton</option>
-                    <option>tobacco</option>
-                    <option>paddy</option>
-                    <option>barley</option>
-                    <option>wheat</option>
-                    <option>millets</option>
-                    <option>ground_nuts50</option>
-                    <option>oil_seeds</option>
-                    <option>pulses50</option>
-                    </Form.Control>
-                    <Form.Group controlId="exampleForm1.ControlInput1">
-                    <Form.Label>Temperature</Form.Label>
-                    <Form.Control name='ftemperature' value={this.state.ftemperature} onChange={this.handleChange} type="text" placeholder="Temperature" />
-                    </Form.Group>
-                    <Form.Group controlId="exampleForm.ControlInput1">
-                    <Form.Label>Humidity</Form.Label>
-                    <Form.Control name='fhumidity'  value={this.state.fhumidity} onChange={this.handleChange} type="text" placeholder="Humidity" />
-                    </Form.Group>
-                    <Form.Group controlId="exampleForm.ControlInput3">
-                    <Form.Label>Moisture</Form.Label>
-                    <Form.Control name='fmoisture'  value={this.state.fmoisture} onChange={this.handleChange} type="text" placeholder="Moisture Content" />
-                    </Form.Group>
-                    <Form.Group controlId="exampleForm.ControlInput3">
-                    <Form.Label>Nitrogen Content</Form.Label>
-                    <Form.Control name='fnitrogen'  value={this.state.fnitrogen} onChange={this.handleChange} type="text" placeholder="Nitrogen " />
-                    </Form.Group>
-                    <Form.Group controlId="exampleForm.ControlInput3">
-                    <Form.Label>Phosphurus Content</Form.Label>
-                    <Form.Control name='fphosphurus'  value={this.state.fphosphurus} onChange={this.handleChange} type="text" placeholder="Phosphurus " />
-                    </Form.Group>
-                    <Form.Group controlId="exampleForm.ControlInput3">
-                    <Form.Label>Potassium Content</Form.Label>
-                    <Form.Control name='fsulphur'  value={this.state.fsulphur} onChange={this.handleChange} type="text" placeholder="Potassium " />
-                    </Form.Group>
-                    <Button name="fertrecom"  onSubmit={this.handleSubmit} variant="success" type="submit">
-                    Submit
-                    </Button>
-                    <br/>
+                   <h6>We recommend the following fertilizer</h6>
+                   {/* <Form>
                     <Form.Group controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Results</Form.Label>
-                    <Form.Control name="fans" placeholder="Recommended a Fertilizer" onChange={this.handleChange} value={this.state.fans} as="textarea" rows={2} />
+                    <Form.Label>We recommend the following </Form.Label>
+                    <Form.Control name="fans" value={this.state.fans} placeholder="Recommended a fertilizer" as="textarea" rows={3} />
                     </Form.Group>
-                    </Form>
-                    </div> 
+                    </Form> */}
+                    <h6>{this.state.fans}</h6>
                     </Col> 
-
+                   
 
                    <Col className="crop_rec_area 2" xs={12} s={12} md={6} lg={6} >
                    <h1 className="croprecheader 2">Recommend a crop</h1>
-                   <div className="crop_rec_form_wrapper 2">          
-                   <Form name="crop" onSubmit={this.handleSubmit}>
-                    <Form.Label>Select the soil type</Form.Label>
-                    <Form.Control  value={this.state.csoiltype} onChange={this.handleChange} name='csoiltype' as="select" label="select your crop">
-                    <option>sandy</option>
-                    <option>loamy</option>
-                    <option>black</option>
-                    <option>red</option>
-                    <option>claley</option>
-                    </Form.Control>
-                    <Form.Group controlId="exampleForm1.ControlInput1">
-                    <Form.Label>Temperature</Form.Label>
-                    <Form.Control name='ctemperature' value={this.state.ctemperature} onChange={this.handleChange} type="text" placeholder="Temperature" />
+                   <h6>We recommend the following crop</h6>
+                   {/* <Form>
+                   <Form.Group className="form_crop_rec" controlId="exampleForm.ControlTextarea1">
+                    <Form.Label>We recommend the following crop</Form.Label>
+                    <Form.Control name="cans" value={this.state.cans} placeholder="Recommended a Crop"as="textarea" rows={12} />
                     </Form.Group>
-                    <Form.Group controlId="exampleForm.ControlInput1">
-                    <Form.Label>Humidity</Form.Label>
-                    <Form.Control name='chumidity'  value={this.state.chumidity} onChange={this.handleChange} type="text" placeholder="Humidity" />
-                    </Form.Group>
-                    <Form.Group controlId="exampleForm.ControlInput3">
-                    <Form.Label>Moisture</Form.Label>
-                    <Form.Control name='cmoisture'  value={this.state.cmoisture} onChange={this.handleChange} type="text" placeholder="Moisture" />
-                    </Form.Group>
-                    <Button name="croprecom" onSubmit={this.handleSubmit} variant="success" type="submit">
-                    Submit
-                    </Button>
-                    <br/>
-                    <Form.Group controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Results</Form.Label>
-                    <Form.Control name="cans" placeholder="Recommended a Crop" onChange={this.handleChange} value={this.state.cans} as="textarea" rows={2} />
-                    </Form.Group>
-                    </Form>
-                    </div>
-                    </Col>  
+                   </Form> */}
+    
+                    {this.state.cans.map(item=>{
+                        console.log(item);
+                        return <h6>{item}</h6>
+                    })}
+                   
+                   </Col>  
                 </Row>        
                 </Container>   
                 </div>
@@ -219,9 +136,9 @@ class Recommend extends React.Component{
                     draggable
                     pauseOnHover={false}
                 />
-            </div>
-        )
+        </div>
     }
 }
 
-export default  Recommend;
+
+export default Recommend_New;
