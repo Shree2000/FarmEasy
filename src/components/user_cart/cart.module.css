@@ -29,6 +29,7 @@
 .sortbytext {
   font-size: 1.2rem;
 }
+
 .payment {
   position: fixed;
   right: 5vw;
@@ -42,7 +43,6 @@
   text-align: center;
 }
 .paymentwrapper {
-  /* height: 80vh; */
   position: relative;
   padding: 5vh 0 5vh;
   text-align: center;
@@ -147,4 +147,23 @@
   margin-top: auto;
   margin-bottom: auto;
   left: 0;
+}
+
+@media only screen and (max-width: 1000px) {
+  .cartlist {
+    width: 90%;
+    margin-top: 5vh;
+    text-align: left;
+    display: block;
+  }
+  .payment {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 4vh;
+    position: static;
+    transform: none;
+  }
+  .sortbydiv {
+    display: none;
+  }
 }

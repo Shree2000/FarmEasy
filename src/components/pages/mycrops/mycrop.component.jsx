@@ -23,7 +23,7 @@ class MyCropList extends React.Component{
         }
         let farmerName= localStorage.getItem('cookieData');
         farmerName=JSON.parse(farmerName);
-        axios.post('http://c421d8af2723.ngrok.io/farmerorder',{
+        axios.post(Identify.api + 'farmerorder',{
             farmer_name:farmerName.username 
         })
         .then(response=>{

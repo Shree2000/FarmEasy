@@ -1,0 +1,45 @@
+webpackHotUpdate("main",{
+
+/***/ "./src/utils/Identify.js":
+/*!*******************************!*\
+  !*** ./src/utils/Identify.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+class Identify {
+  constructor() {
+    this.setData = (name, type) => {
+      let obj = {
+        username: name,
+        usertype: type
+      };
+      this.mystorage.setItem('loginData', JSON.stringify(obj));
+    };
+
+    this.removeData = () => {
+      this.mystorage.removeItem('loginData');
+    };
+
+    this.getData = () => {
+      if (this.mystorage.getItem('loginData')) {
+        let data = this.mystorage.getItem('loginData');
+        data = JSON.parse(data);
+        return data;
+      } else return "nodata";
+    };
+
+    this.mystorage = window.sessionStorage;
+    this.api = "http://b0046ed3900b.ngrok.io/";
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (new Identify());
+
+/***/ })
+
+})
+//# sourceMappingURL=main.223b75615685abe101da.hot-update.js.map

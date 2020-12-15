@@ -12,3 +12,14 @@
   font-size: 1.8rem;
   color: #edf5e1;
 }
+
+@media only screen and (max-width: 712px) {
+  .logo {
+    width: 4vw;
+    margin-left: 3vw;
+  }
+  .title {
+    margin-left: 4vw;
+    font-size: 1.7rem;
+  }
+}

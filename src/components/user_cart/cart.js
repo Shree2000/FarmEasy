@@ -15,12 +15,13 @@ function Cart(props)
     const [ischecked,setchecked] = useState(false);
 
     
+    let userData= JSON.parse(localStorage.getItem('cookieData'));
 
     useEffect(() => {
         const apiurl = Identity.api + "cartitems";
         console.log(apiurl);
         axios.post(apiurl, {
-            "customer_name" : "John"
+            "customer_name" : userData.username
           })
           .then(function (response) {
             console.log(response.data);
@@ -29,7 +30,7 @@ function Cart(props)
             response.data.cartlist.map((single_crop,index) => {
                 // console.log(typeof(single_crop.productcost));
                 // console.log(typeof(single_crop.productquantity));
-                totalcost =totalcost + single_crop.productcost*single_crop.productquantity
+                totalcost =totalcost + single_crop.productcost;
             })
             console.log(totalcost);
             setsubtotal(totalcost);
@@ -46,8 +47,9 @@ function Cart(props)
             return (oneobject.productcategory != prodname || oneobject.sellername != seller);
         });
         setcart(newprods);
-        setsubtotal(subtotal - quantity*price);
-        setgrandtotal((subtotal - quantity*price)*1.18 + 50);
+        setsubtotal(subtotal - price);
+        setgrandtotal((subtotal - price)*1.18 + 50);
+
 
     }
 
@@ -60,7 +62,7 @@ function Cart(props)
         const apiurl2 = Identity.api + "payments";
         var order_id = "";
         axios.post(apiurl2, {
-           "customer_name" : "John",
+           "customer_name" : userData.username,
            "amount" : grandtotal+1,
           })
           .then(function (response) {
@@ -79,13 +81,32 @@ function Cart(props)
               "handler": function (response){
                   const apiurl3 = Identity.api + "orderplaced";
                   axios.post(apiurl3, {
-                    "customer_name" : "John",
+                    "customer_name" : userData.username,
                     "payment_id" : response.razorpay_payment_id,
                     "order_id" : response.razorpay_order_id,
                     "signature" : response.razorpay_signature
                   })
                   .then(function (res) {
                     console.log(res.status);
+
+                    axios.post(Identity.spatialapi + 'orders', {
+                        "orderid" : "1",
+                        "farmer_name" : "Pashva Mehta",
+                        "user_name" : userData.username,
+                        "delivery_service" : "Toby Maguire",
+                        "sourcelat" : "20.55" ,
+                        "sourcelong" : "78.10",
+                        "destlat" : "19",
+                        "destlong" : "72"
+                      })
+                      .then(function (response) {
+                            console.log(response.status);
+                            console.log(response.data);
+
+                      })
+                      .catch(function (error) {
+                        console.log(error);
+                      });
                   })
                   .catch(function (error) {
                     console.log(error);
@@ -122,7 +143,7 @@ function Cart(props)
     function paymenthandler(){
         const apiurl = Identity.api + "cartitems";
         axios.post(apiurl, {
-            "customer_name" : "John"
+            "customer_name" : userData.username
           })
           .then(function (response) {
             console.log(response.data);

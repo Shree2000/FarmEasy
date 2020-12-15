@@ -15,6 +15,8 @@ function SingleCrop(props)
 
 //    var imgsource = 
 
+    let userData= JSON.parse(localStorage.getItem('cookieData'));
+
     function addhandler(){
         console.log(quantity);
         toast.success("Added to cart",{
@@ -28,7 +30,7 @@ function SingleCrop(props)
         console.log(props.price);
         console.log("sending");
         axios.post(apilink, {
-            "customer_name" : "John",
+            "customer_name" : userData.username,
             // "customer_name" : Identity.getData().username,
             "seller_name" : props.seller,
             "category" : props.cropname,

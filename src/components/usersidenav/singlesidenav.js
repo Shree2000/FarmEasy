@@ -12,7 +12,7 @@ function SingleSideNav(props)
                    </div>
                    <div className={styles.title}>
                     <h1 className={styles.title}>{props.title}</h1>
-                   </div>
+                   </div> 
             </div>
 
         )

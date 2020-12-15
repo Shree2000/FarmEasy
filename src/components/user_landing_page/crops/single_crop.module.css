@@ -57,7 +57,7 @@
 .seller_info {
   text-align: left;
   font-family: "Noto Serif", serif;
-  margin-bottom: 6vh;
+  margin-bottom: 8vh;
 }
 .seller_title {
   font-size: 1rem;
@@ -141,4 +141,18 @@
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+
+@media only screen and (max-width: 1000px) and (min-width: 600px) {
+  .cropimage {
+    margin-top: 2vh;
+    width: 25vw;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .cropimage {
+    margin-top: 2vh;
+    width: 40vw;
+  }
 }

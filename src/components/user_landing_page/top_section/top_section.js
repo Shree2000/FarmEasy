@@ -52,6 +52,7 @@ function TopSection(props)
 
         return (
            <div className={styles.top_section_outer}>
+               <div className={styles.pc}> 
                <div className={styles.filterbuttondiv}>
                     <button type="button" className={"btn btn-info " + styles.filterbutton} data-toggle="modal" data-target="#exampleModal"><span className={styles.filtertext}>Filter</span></button>
                </div>
@@ -63,8 +64,8 @@ function TopSection(props)
                     <i class="fa fa-search"></i>
                 </button>
                 </div>
-            </div>
-           </div>
+                </div>
+                </div>
            <div className={styles.sortbydiv}>
                 <div class="dropdown mr-1">
                     <button type="button" className={"btn btn-success dropdown-toggle " + styles.sortbybutton } id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
@@ -77,6 +78,37 @@ function TopSection(props)
                     </div>
                 </div>
            </div>
+           </div>
+           <div className={styles.tablet}>
+           <div className={styles.searchbardiv2}>
+               <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search crops" value={searchterm} onChange={(e) => searchhandler(e.target.value)} />
+                <div className={styles.input_group_append} >
+                <button class="btn btn-secondary" type="button">
+                    <i class="fa fa-search"></i>
+                </button>
+                </div>
+                </div>
+            </div>
+            <div>
+            <div className={styles.filterbuttondiv2}>
+                    <button type="button" className={"btn btn-info " + styles.filterbutton2} data-toggle="modal" data-target="#exampleModal"><span className={styles.filtertext}>Filter</span></button>
+            </div>
+            <div className={styles.sortbydiv2}>
+                <div class="dropdown mr-1">
+                    <button type="button" className={"btn btn-success dropdown-toggle " + styles.sortbybutton2 } id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+                    <span className={styles.sortbytext} >Sort By</span>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                    {/* <a class="dropdown-item" href="#" onClick={() => props.sorter(0)}>Proximity</a> */}
+                    <a class="dropdown-item" href="#" onClick={() => props.sorter(1)}>Price Increasing</a>
+                    <a class="dropdown-item" href="#" onClick={() => props.sorter(2)}>Price Decreasing</a>
+                    </div>
+                </div>
+           </div>
+            </div>
+           </div>
+
 
             {/* Modal */}
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

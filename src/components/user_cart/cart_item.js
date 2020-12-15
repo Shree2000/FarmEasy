@@ -1,12 +1,12 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import ReactDOM from "react-dom";
 import styles from "./cart_item.module.css";
 import axios from "axios";
 import Identity from '../../utils/Identify';
-
+ 
 function CartItem(props)
 {   
-
+      
     const source1 = require("../../images/corn.png");
     const source2 = require("../../images/millets.jpg");
     const source3 = require("../../images/rice.jpg");
@@ -26,11 +26,16 @@ function CartItem(props)
         source = source5;
     }
 
+
+    let userData= JSON.parse(localStorage.getItem('cookieData'));
+
+
+      
     function deletehandler(){
         props.deleter(props.cropname,props.seller,props.quantity,props.price);
         const apiurl = Identity.api + "removefromcart";
         axios.post(apiurl, {
-            "customer_name" : "John",
+            "customer_name" : userData.username,
             "seller_name" : props.seller,
             "category" : props.cropname,
           })
@@ -44,6 +49,9 @@ function CartItem(props)
 
     // const source = require("../../images/corn.png");
     return(
+        <div>
+
+        <div className={styles.pc}>
         <div className={styles.singlecartitem}>
                <div className={styles.cartimgdiv}>
                <img className={styles.cart_item_img}  src={source}></img>
@@ -63,6 +71,36 @@ function CartItem(props)
 
                </div>
             
+        </div>
+        </div>
+        <div className={styles.tablet}>
+            <div className={styles.singlecartitem2}>
+                <div className={"row "+styles.onerow}>
+                        <div className={"col-3"}>
+                        <img className={styles.cart_item_img}  src={source}></img>
+                        </div>
+                        <div className={"col-7"}>
+                        <h1 className={styles.carttitle}> {props.cropname} </h1>
+                        <div className={"row"}>
+                            <div className={"col-6"}>
+                            <h1 className={styles.cartquantity}>{props.quantity} kg</h1>
+                            </div>
+                            <div className={"col-6"}>
+                            <h1 className={styles.cartcost}>Rs {props.price}</h1>
+                            </div>
+                        </div>
+                        </div>
+                        <div className={"col-2 "+styles.trashintab}>
+                            <div className={styles.onemorewrapper}>
+                        <i className={"fa fa-trash fa-2x "+styles.trashicon} aria-hidden="true" onClick={deletehandler}></i>
+                        </div>
+                        </div>    
+                </div>
+               
+        
+                
+            </div>
+        </div>
         </div>
     )
 } 

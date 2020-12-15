@@ -6,6 +6,8 @@ import Sidenav from '../../sidenavbar/sidenav.component';
 import './govmntschemes.css';
 import Axios from 'axios';
 import Spinner from '../../../utils/spinner/spinner'
+import Identity from '../../../utils/Identify';
+
 
 class GovernmentSchemes extends Component{
     constructor()
@@ -21,7 +23,7 @@ class GovernmentSchemes extends Component{
             arr:[],
             spinner:true,
         }
-        Axios.post("http://c421d8af2723.ngrok.io/gs", {state:"Maharashtra"})
+        Axios.post(Identity.api + 'gs', {state:"Maharashtra"})
         .then(response=>{
             console.log(response.data.ans);
             this.setState({

@@ -11,6 +11,8 @@ import {withRouter} from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 import 'react-toastify/dist/ReactToastify.css';
+import Identity from '../../utils/Identify';
+
 const Modal = (props) => {
   
   const [formData, setFormData]= useState({
@@ -39,7 +41,7 @@ const Modal = (props) => {
       
         event.preventDefault();
         console.log(formData);
-        axios.post('http://261fdb878eb1.ngrok.io/farmers',{
+        axios.post(Identity.api + 'farmers',{
             name:formData.username,
             latitude:props.latitude,
             longitude:props.longitude,
@@ -53,7 +55,7 @@ const Modal = (props) => {
           .catch(function (error) {
             console.log(error+ "At spatial side");
           });
-          axios.post('http://c421d8af2723.ngrok.io/register',{
+          axios.post(Identity.api + 'register',{
             username:formData.username,
             usertpe:formData.usertype,
             password:formData.password,

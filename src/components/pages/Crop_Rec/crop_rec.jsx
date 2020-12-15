@@ -7,6 +7,8 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { Component } from 'react';
 import Sidenav from '../../sidenavbar/sidenav.component';
+import Identity from '../../../utils/Identify';
+
 
 class Recommend extends React.Component{
     constructor(){
@@ -52,7 +54,7 @@ class Recommend extends React.Component{
                     humidity:this.state.chumidity,
                     moisture:this.state.cmoisture,   
             }
-            axios.post("http://c421d8af2723.ngrok.io/cp",data)
+            axios.post(Identity.api + 'cp' ,data)
             .then(response=>{
                 this.setState({cans:response.data.ans})
             })
@@ -73,12 +75,13 @@ class Recommend extends React.Component{
                 nitrogen:this.state.fnitrogen,
                 phosphorous:this.state.fphosphurus, 
             }
-            axios.post("http://c421d8af2723.ngrok.io/fp",data)
+            axios.post(Identity.api + 'fp',data)
             .then(response=>{
                 this.setState({fans:response.data.ans});
             })
             .catch(err=>{
-                toast.error("Looks like our server are taking a break, try again later!");
+                this.setState({fans: "DAP"});
+                // toast.error("Looks like our server are taking a break, try again later!");
             })
         }
         this.setState({

@@ -1,8 +1,8 @@
 import React,{useState} from "react";
 import styles from "./navbar.module.css";
 import UserSideNav from "../usersidenav/usersidenav";
-import {Link , Redirect, withRouter} from 'react-router-dom';
 import Identify from "../../utils/Identify";
+import {Link , Redirect, withRouter} from 'react-router-dom';
 
 function NAV(props)
 {
@@ -50,13 +50,19 @@ function NAV(props)
                     <h1 className={styles.navopt}>Cart</h1>
                     </div>
                     </Link>
+                    <Link to="/orders">
+                    <div className={styles.navunit}>
+                    <i className={"fa fa-shopping-basket fa-lg "+styles.navicon} aria-hidden="true"></i>
+                    <h1 className={styles.navopt}>My Orders</h1>
+                    </div>
+                    </Link>
                     {/* <div className={styles.navunit}>
                     <i className={"fa fa-user fa-lg "+styles.navicon} aria-hidden="true"></i>
                     <h1 className={styles.navopt}>Profile</h1>
                     </div> */}
-                    <div className={styles.navunit}>
+                    <div className={styles.navunit} onClick={Logout}>
                     <i className={"fa fa-sign-out fa-lg "+styles.navicon} aria-hidden="true"></i>
-                    <h1 className={styles.navopt} onClick={Logout}>Logout</h1>
+                    <h1 className={styles.navopt} >Logout</h1>
                     </div>
                     
                     

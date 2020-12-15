@@ -5,6 +5,8 @@ import LineChart from '../LineChart/lineChart.component';
 import DoughnutChart from '../Pie-Chart/pieChart.component';
 import Identify from '../../utils/Identify';
 import axios from 'axios';
+import Identity from '../../utils/Identify';
+
 
 class Farmercenter extends React.Component{
     constructor()
@@ -20,7 +22,7 @@ class Farmercenter extends React.Component{
         }
         let farmerName= localStorage.getItem('cookieData');
         farmerName=JSON.parse(farmerName);
-        axios.post('http://f2e652d9e6901.ngrok.io/fcd',{farmername:farmerName.username})
+        axios.post(Identity.api + 'fcd',{farmername:farmerName.username})
         .then(response=>{
             let tempnamearr=[];
             let tempdataarr=[];

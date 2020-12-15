@@ -1,11 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 import {Jumbotron,Button} from 'react-bootstrap'
+import Identity from '../../../utils/Identify';
+
 
 function Deliveryboi(){
     //get
     navigator.geolocation.getCurrentPosition((pos)=>{
-        axios.post("http://92b4980dd7e1.ngrok.io/logistics", {
+        axios.post(Identity.api + 'logistics', {
             latitude: pos.coords.latitude,
             longitude:pos.coords.longitude,
         })

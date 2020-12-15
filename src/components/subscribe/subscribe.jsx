@@ -4,6 +4,7 @@ import './subscribe.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
  function Subscribe(){
     const [subscribe, setSubscribe] =useState(false);
     const [locdata, setlocdata]= useState({

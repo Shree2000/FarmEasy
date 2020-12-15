@@ -50,3 +50,52 @@
   color: #c82333;
   transform: scale(1.1);
 }
+
+.pc {
+  display: block;
+}
+.tablet {
+  display: none;
+}
+@media only screen and (max-width: 1000px) {
+  .pc {
+    display: none;
+  }
+  .tablet {
+    display: block;
+  }
+  .onerow {
+    /* display: block; */
+    width: 100%;
+  }
+  .singlecartitem2 {
+    margin: 2vh 0;
+    /* height: 0; */
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: block;
+    align-items: center;
+    font-family: "Noto Sans JP", sans-serif;
+    width: 95vw;
+    position: relative;
+    padding: 1.5vh 0;
+  }
+  .cart_item_img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .trashintab {
+    position: relative;
+  }
+  .onemorewrapper {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .trashicon {
+    color: #c82333;
+  }
+}

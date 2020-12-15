@@ -16,6 +16,8 @@ import CartOuter from "./components/user_cart/cart_outer";
 import GovernmentSchemes from './components/pages/govmntSchemes/govmntschemes';
 import Recommend from './components/pages/Crop_Rec/crop_rec';
 import Deliveryboi from './components/pages/deliveryboy/deliveryboy';
+import Orders from './components/user_orders/user_orders';
+
 
 function App() 
 {
@@ -34,6 +36,7 @@ function App()
         < ProtectedRoute exact path="/user" component={UserScreen} />
         < ProtectedRoute exact path="/cart" component={CartOuter} />
         < ProtectedRoute exact path="/croprec" component={Recommend} />
+        < ProtectedRoute exact path="/orders" component={Orders} />
         < Route exact path="/delivery" component={Deliveryboi} />
 
         <Route path='*' component={Error404Page} />

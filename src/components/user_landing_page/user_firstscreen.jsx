@@ -16,11 +16,15 @@ function FarmerScreen()
     const [crops,setcrops] = useState([]);
     const [suggestedcrops,setsuggestedcrops] = useState([]);
 
+    console.log("details")
+    console.log(localStorage.getItem('cookieData').username);
+    let userData= JSON.parse(localStorage.getItem('cookieData'));
+
     useEffect(() => {
       const apiurl = Identity.api + "allproduct";
       console.log(apiurl);
       axios.post(apiurl, {
-          "username" : "John"
+          "username" : userData.username
         })
         .then(function (response) {
           console.log(response.data.productlist);
